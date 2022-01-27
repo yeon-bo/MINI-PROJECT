@@ -1,10 +1,15 @@
 import React, { useState } from "react";
-import style from "@emotion/styled";
+import styled from "@emotion/styled";
 
 export const Search = () => {
+  const Search = styled.div`
+    background-color: #18191e;
+    color: #fff;
+  `;
   return (
-    <div>
+    <Search>
+      <img src="./image/logo.png" alt="logo" />
       <p>hello</p>
-    </div>
+    </Search>
   );
 };
