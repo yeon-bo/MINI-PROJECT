@@ -1,5 +1,10 @@
 import React, { useState } from "react";
 
 export const Search = () => {
-  return <h3>Hellow</h3>;
+  return (
+    <div>
+      <p>hello</p>
+      <h5>hi</h5>
+    </div>
+  );
 };
