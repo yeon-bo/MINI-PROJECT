@@ -8,6 +8,17 @@
   font-size: 16px;
 }
 
+@font-face {
+  font-family: ProductSansBold;
+  src: url("./font/Product-Sans-Bold.ttf");
+  font-weight: bold;
+}
+@font-face {
+  font-family: ProductSansRegular;
+  src: url("./font/Product-Sans-Regular.ttf");
+  font-weight: normal;
+}
+
 /* http://meyerweb.com/eric/tools/css/reset/ 
    v2.0 | 20110126
    License: none (public domain)
