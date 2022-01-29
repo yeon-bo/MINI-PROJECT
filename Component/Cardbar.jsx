@@ -4,16 +4,19 @@ export const Cardbar = () => {
   const Cardbar = styled.div`
     height: 2em;
     border-top: 1px solid #38393d;
+    bottom: 0;
+    display: flex;
   `;
   const Link = styled.div`
-    float: left;
+    width: 45%;
     height: 1em;
     margin-left: 1em;
     top: 50%;
     transform: translateY(45%);
+    text-align: left;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: start;
   `;
   const LinkIcon = styled.img`
     height: 0.42em;
@@ -22,17 +25,21 @@ export const Cardbar = () => {
   const LinkTitle = styled.span`
     font-family: "Source Code Pro", monospace;
     font-size: 0.63em;
+    height: 0.81em;
+    line-height: 0.79em;
     color: #838489;
+    overflow: hidden;
   `;
   const Buttons = styled.div`
-    float: right;
+    width: 55%;
     height: 1em;
     margin-right: 1em;
     top: 50%;
     transform: translateY(45%);
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: end;
+    overflow: hidden;
   `;
   const KarmaButton = styled.div`
     height: 0.83em;

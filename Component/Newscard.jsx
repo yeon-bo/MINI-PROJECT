@@ -39,6 +39,8 @@ export const Newscard = () => {
     margin-top: 2.88rem;
     text-align: left;
     width: 15.75rem;
+    height: 8.5rem;
+    overflow: hidden;
   `;
   const UserTime = styled.p`
     position: absolute;
