@@ -2,20 +2,21 @@ import styled from "@emotion/styled";
 
 import { CardTitle } from "../Component/CardTitle.jsx";
 
-export const Category = () => {
-  const CategoryBox = styled.div`
+export const HomeTab = () => {
+  const TabBox = styled.div`
+    display: inline-block;
     width: 20em;
     margin: 0 auto;
   `;
-  const Category = styled.div`
+  const Tab = styled.div`
     height: 2.38em;
     display: flex;
     align-items: center;
     justify-content: center;
   `;
-  const CategoryTitle = styled.div`
-    flex-grow: 1;
+  const TabTitle = styled.div`
     height: 100%;
+    width: 25%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -27,17 +28,17 @@ export const Category = () => {
   `;
   const PostBox = styled.div``;
   return (
-    <CategoryBox>
-      <Category>
-        <CategoryTitle>Top</CategoryTitle>
-        <CategoryTitle>New</CategoryTitle>
-        <CategoryTitle>Ask</CategoryTitle>
-        <CategoryTitle>Show</CategoryTitle>
-      </Category>
+    <TabBox>
+      <Tab>
+        <TabTitle>Top</TabTitle>
+        <TabTitle>New</TabTitle>
+        <TabTitle>Ask</TabTitle>
+        <TabTitle>Show</TabTitle>
+      </Tab>
       <PostBox>
         <CardTitle />
         <CardTitle />
       </PostBox>
-    </CategoryBox>
+    </TabBox>
   );
 };

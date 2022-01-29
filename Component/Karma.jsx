@@ -15,7 +15,7 @@ export const Karma = () => {
     font-family: ProductSansBold;
     color: #ff3e00;
     font-size: 0.63em;
-    line-height: 0.76em;
+    line-height: 0.76rem;
     text-align: center;
   `;
   return (

@@ -25,8 +25,8 @@ export const Cardbar = () => {
   const LinkTitle = styled.span`
     font-family: "Source Code Pro", monospace;
     font-size: 0.63em;
-    height: 0.81em;
-    line-height: 0.79em;
+    height: 0.81rem;
+    line-height: 0.79rem;
     color: #838489;
     overflow: hidden;
   `;
@@ -63,6 +63,7 @@ export const Cardbar = () => {
   const ButtonSpan = styled.span`
     font-family: "Source Code Pro", monospace;
     font-size: 0.75em;
+    line-height: 0.94rem;
   `;
   return (
     <Cardbar>
