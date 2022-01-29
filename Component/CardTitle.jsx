@@ -14,11 +14,11 @@ export const CardTitle = () => {
   const Title = styled.span`
     display: block;
     text-align: left;
-    padding: 1em 2em 1em 1em;
+    padding: 1rem 2rem 1rem 1rem;
     color: #fff;
     font-family: ProductSansBold;
     font-size: 1em;
-    line-height: 1.3em;
+    line-height: 1.3rem;
   `;
   const AllowIcon = styled.img`
     position: absolute;

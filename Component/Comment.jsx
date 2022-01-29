@@ -16,15 +16,15 @@ export const Comment = () => {
     color: #ff3e00;
     font-family: Source Code Pro;
     font-size: 0.75em;
-    line-height: 0.94em;
-    margin-right: 0.5em;
+    line-height: 0.94rem;
+    margin-right: 0.5rem;
     text-decoration: underline;
   `;
   const UserTime = styled.span`
     color: #838489;
     font-family: Source Code Pro;
     font-size: 0.75em;
-    line-height: 0.94em;
+    line-height: 0.94rem;
   `;
   const CommentText = styled.span`
     display: block;

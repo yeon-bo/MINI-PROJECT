@@ -26,9 +26,9 @@ export const Newscard = () => {
     float: left;
     font-family: ProductSansRegular;
     font-size: 0.75em;
-    line-height: 1em;
+    line-height: 0.91rem;
     color: #ffffff;
-    margin-top: 0.4em;
+    margin-top: 0.25rem;
   `;
   const UserTitle = styled.p`
     position: absolute;
