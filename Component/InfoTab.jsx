@@ -30,6 +30,7 @@ export const InfoTab = () => {
     justify-content: center;
     align-items: center;
     border-bottom: 2px solid #2c2d32;
+    box-sizing: border-box;
     color: #6b6c70;
     font-family: ProductSansBold;
     font-size: 0.75em;

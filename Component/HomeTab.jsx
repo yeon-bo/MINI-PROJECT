@@ -21,6 +21,7 @@ export const HomeTab = () => {
     justify-content: center;
     align-items: center;
     border-bottom: 1px solid #2c2d32;
+    box-sizing: border-box;
     color: #6b6c70;
     font-family: ProductSansRegular;
     font-size: 1em;

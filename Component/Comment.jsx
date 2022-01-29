@@ -24,6 +24,7 @@ export const Comment = () => {
     color: #838489;
     font-family: Source Code Pro;
     font-size: 0.75em;
+    line-height: 0.94rem;
   `;
   const CommentText = styled.span`
     display: block;

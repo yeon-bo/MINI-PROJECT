@@ -4,6 +4,7 @@ export const Cardbar = () => {
   const Cardbar = styled.div`
     height: 2em;
     border-top: 1px solid #38393d;
+    box-sizing: border-box;
     bottom: 0;
     display: flex;
   `;
