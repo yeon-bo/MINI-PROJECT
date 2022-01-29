@@ -1,5 +1,8 @@
 import styled from "@emotion/styled";
 
+import { Karma } from "../Component/Karma.jsx";
+import { Cardbar } from "../Component/Cardbar.jsx";
+
 export const DailyNews = () => {
   const Title = styled.h3`
     font-family: ProductSansBold;
@@ -33,22 +36,37 @@ export const DailyNews = () => {
     height: 14.94em;
     padding: 1em;
     box-sizing: border-box;
-    background-color: #ddd;
+    border: 1px solid #ddd;
+    position: relative;
   `;
-  const SuperKarma = styled.div`
-    width: 4.63em;
-    height: 0.94em;
-    border: 0.04em solid #ff3e00;
-    box-sizing: border-box;
-    border-radius: 1.38em;
+  const User = styled.div`
+    position: absolute;
   `;
-  const Karma = styled.p`
+  const UserName = styled.span`
+    float: left;
+    font-family: ProductSansRegular;
+    font-size: 0.75em;
+    line-height: 1em;
+    color: #ffffff;
+    margin-top: 0.4em;
+  `;
+  const UserTitle = styled.p`
+    position: absolute;
     font-family: ProductSansBold;
-    color: #ff3e00;
+    font-size: 1.63em;
+    line-height: 2.11rem;
+    color: #ffffff;
+    margin-top: 2.88rem;
+    text-align: left;
+    width: 15.75rem;
+  `;
+  const UserTime = styled.p`
+    position: absolute;
+    font-family: "Source Code Pro", monospace;
     font-size: 0.63em;
-    line-height: 1.3em;
-    text-align: center;
-    margin: auto 0;
+    line-height: 0.81rem;
+    color: #838489;
+    margin-top: 12.13rem;
   `;
   return (
     <>
@@ -57,9 +75,15 @@ export const DailyNews = () => {
         <Cards>
           <Card>
             <News>
-              <SuperKarma>
-                <Karma>Super karma</Karma>
-              </SuperKarma>
+              <User>
+                <Karma />
+                <UserName>Cameron Williamson</UserName>
+              </User>
+              <UserTitle>
+                Washington state shuts down Amazon price-fixing program
+                nationwide
+              </UserTitle>
+              <UserTime>3 hours ago</UserTime>
             </News>
           </Card>
           <Card></Card>
