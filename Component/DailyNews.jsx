@@ -6,10 +6,10 @@ export const DailyNews = () => {
   const Title = styled.h3`
     font-family: ProductSansBold;
     font-size: 1.75em;
-    line-height: 2.13rem;
+    line-height: 2.12rem;
     color: #fff;
-    margin: 1.25rem;
-    display: flex;
+    margin: 1.15rem 1.25rem 1.4rem;
+    text-align: left;
   `;
   const Card_cont = styled.div`
     position: relative;

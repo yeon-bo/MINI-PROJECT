@@ -1,6 +1,7 @@
 import styled from "@emotion/styled";
 
 import { CardTitle } from "../Component/CardTitle.jsx";
+import { CardTitle2 } from "../Component/CardTitle2.jsx";
 
 export const HomeTab = () => {
   const TabBox = styled.div`
@@ -9,7 +10,7 @@ export const HomeTab = () => {
     margin: 0 auto;
   `;
   const Tab = styled.div`
-    height: 2.38em;
+    height: 2.3em;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -25,7 +26,6 @@ export const HomeTab = () => {
     color: #6b6c70;
     font-family: ProductSansRegular;
     font-size: 1em;
-    line-height: 1.21em;
   `;
   const PostBox = styled.div``;
   return (
@@ -37,7 +37,7 @@ export const HomeTab = () => {
         <TabTitle>Show</TabTitle>
       </Tab>
       <PostBox>
-        <CardTitle />
+        <CardTitle2 />
         <CardTitle />
       </PostBox>
     </TabBox>

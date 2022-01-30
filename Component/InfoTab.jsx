@@ -1,6 +1,7 @@
 import styled from "@emotion/styled";
 
 import { CardTitle } from "../Component/CardTitle.jsx";
+import { CardTitle2 } from "../Component/CardTitle2.jsx";
 
 export const InfoTab = () => {
   const Intro = styled.span`
@@ -10,7 +11,7 @@ export const InfoTab = () => {
     font-size: 0.81em;
     line-height: 1rem;
     text-align: left;
-    margin: 1.75rem 1.25rem;
+    margin: 1.5rem 1.25rem 2rem;
   `;
   const TabBox = styled.div`
     display: inline-block;
@@ -51,7 +52,7 @@ export const InfoTab = () => {
           <TabTitle>Favorites</TabTitle>
         </Tab>
         <PostBox>
-          <CardTitle />
+          <CardTitle2 />
           <CardTitle />
         </PostBox>
       </TabBox>
