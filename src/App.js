@@ -2,7 +2,7 @@ import "./styles.css";
 
 import { Topbar } from "../Component/Topbar";
 import { Search } from "../Component/Search";
-import { SearchTag } from "../Component/SearchTag";
+import { InfoTab } from "../Component/InfoTab";
 import { CardTitle } from "../Component/CardTitle";
 
 export default function App() {
@@ -10,8 +10,7 @@ export default function App() {
     <div className="App">
       <Topbar />
       <Search />
-      <SearchTag />
-      <CardTitle />
+      <InfoTab />
     </div>
   );
 }

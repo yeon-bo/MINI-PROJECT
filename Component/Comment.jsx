@@ -37,6 +37,7 @@ export const Comment = () => {
     justify-content: start;
     width: 18rem;
     height: 4rem;
+    overflow: hidden;
     color: #838489;
     font-family: Roboto;
     font-size: 0.75em;

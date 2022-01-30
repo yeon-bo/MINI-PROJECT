@@ -12,6 +12,8 @@ export const InfoTab = () => {
     line-height: 1rem;
     text-align: left;
     margin: 1.5rem 1.25rem 2rem;
+    height: 4rem;
+    overflow: hidden;
   `;
   const TabBox = styled.div`
     display: inline-block;
