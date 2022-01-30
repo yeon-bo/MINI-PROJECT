@@ -3,7 +3,7 @@ import styled from "@emotion/styled";
 
 import { Topbar } from "../Component/Topbar";
 import { Backallow } from "../Component/Backallow";
-import { Comments } from "../Component/Comments";
+import { AboutLink } from "../Component/AboutLink";
 
 export default function App() {
   const Img = styled.img`
@@ -15,10 +15,10 @@ export default function App() {
   `;
   return (
     <div className="App">
-      <Img src="./image/Comment(2).png" Backallow="Allow" />
+      {/* <Img src="./image/About page.png" Backallow="Allow" /> */}
       <Topbar />
       <Backallow />
-      <Comments />
+      <AboutLink />
     </div>
   );
 }

@@ -1,9 +1,8 @@
 import styled from "@emotion/styled";
 
 import { CommentsCont } from "../Component/CommentsCont.jsx";
-import { CommentsComRe } from "../Component/CommentsComRe.jsx";
 
-export const CommentsCom = () => {
+export const CommentsCom2 = () => {
   const CommentCont = styled.div`
     box-sizing: border-box;
     border-bottom: 1px solid #38393d;
@@ -43,8 +42,6 @@ export const CommentsCom = () => {
         <UserTime>30 minutes ago</UserTime>
         <AllowIcon src="./image/Allow.png" alt="Allow" />
       </UserBar>
-      <CommentsCont />
-      <CommentsComRe />
     </CommentCont>
   );
 };

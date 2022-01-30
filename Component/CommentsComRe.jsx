@@ -1,16 +1,15 @@
 import styled from "@emotion/styled";
 
 import { CommentsCont } from "../Component/CommentsCont.jsx";
-import { CommentsComRe } from "../Component/CommentsComRe.jsx";
 
-export const CommentsCom = () => {
+export const CommentsComRe = () => {
   const CommentCont = styled.div`
     box-sizing: border-box;
-    border-bottom: 1px solid #38393d;
+    border-top: 1px solid #38393d;
   `;
   const UserBar = styled.div`
     position: relative;
-    margin: 1.25em;
+    margin: 1em 2.5em;
     display: flex;
     align-items: center;
     justify-content: start;
@@ -30,21 +29,26 @@ export const CommentsCom = () => {
     line-height: 0.94rem;
     letter-spacing: -0.02em;
   `;
-  const AllowIcon = styled.img`
-    position: absolute;
-    width: 0.75em;
-    transform: rotate(180deg);
-    right: 0;
+  const UserText = styled.span`
+    display: block;
+    text-align: left;
+    color: #cecfd4;
+    font-family: Roboto;
+    font-size: 1em;
+    line-height: 1.3rem;
+    margin: 1.1rem 1rem 1.1rem 2.5rem;
   `;
   return (
     <CommentCont>
       <UserBar>
         <UserName>doctoboggan</UserName>
         <UserTime>30 minutes ago</UserTime>
-        <AllowIcon src="./image/Allow.png" alt="Allow" />
       </UserBar>
-      <CommentsCont />
-      <CommentsComRe />
+      <UserText>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Porttitor est
+        ullamcorper adipiscing vestibulum. Suspendisse hac arcu, nunc adipiscing
+        dictum purus. Vel
+      </UserText>
     </CommentCont>
   );
 };
