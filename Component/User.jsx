@@ -24,15 +24,11 @@ export const User = () => {
     line-height: 0.91rem;
     margin-top: 0.38rem;
   `;
-  const KarmaCnt = styled.span``;
-  const Join = styled.span``;
   return (
     <UserCont>
       <Karma />
       <UserName>Cameron Williamson</UserName>
-      <UserInfo>
-        <KarmaCnt>41439 karma</KarmaCnt> | <Join>joined 15 years ago</Join>
-      </UserInfo>
+      <UserInfo>41439 karma | joined 15 years ago</UserInfo>
     </UserCont>
   );
 };

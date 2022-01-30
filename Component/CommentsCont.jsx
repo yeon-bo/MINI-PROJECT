@@ -8,14 +8,14 @@ export const CommentsCont = () => {
     font-family: Roboto;
     font-size: 1em;
     line-height: 1.3rem;
-    margin: 0.75rem 1.25rem 1rem;
+    margin: 2.2rem 1.25rem 1rem;
   `;
   const More = styled.button`
     display: block;
     border: none;
     background: none;
     text-decoration: underline;
-    margin: 0.31rem 0 1.25rem 1.25rem;
+    margin: 1.25rem;
     color: #838489;
     font-family: Source Code Pro;
     font-size: 0.75em;

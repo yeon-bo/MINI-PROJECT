@@ -1,10 +1,11 @@
 import styled from "@emotion/styled";
 
 import { CommentsCom } from "../Component/CommentsCom.jsx";
+import { CommentsCom2 } from "../Component/CommentsCom2.jsx";
 
 export const Comments = () => {
   const TitleBack = styled.div`
-    height: 4.38em;
+    height: 4.15em;
     display: flex;
     align-items: center;
     justify-content: start;
@@ -23,8 +24,7 @@ export const Comments = () => {
       <TitleBack>
         <Title>Comments</Title>
       </TitleBack>
-      <CommentsCom />
-      <CommentsCom />
+      <CommentsCom2 />
       <CommentsCom />
     </>
   );

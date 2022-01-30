@@ -1,15 +1,17 @@
 import "./styles.css";
 
 import { Topbar } from "../Component/Topbar";
-import { Backallow } from "../Component/Backallow";
-import { Comments } from "../Component/Comments";
+import { Search } from "../Component/Search";
+import { SearchTag } from "../Component/SearchTag";
+import { CardTitle } from "../Component/CardTitle";
 
 export default function App() {
   return (
     <div className="App">
       <Topbar />
-      <Backallow />
-      <Comments />
+      <Search />
+      <SearchTag />
+      <CardTitle />
     </div>
   );
 }

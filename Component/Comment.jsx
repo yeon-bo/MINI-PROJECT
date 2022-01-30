@@ -8,6 +8,7 @@ export const Comment = () => {
   `;
   const UserCont = styled.div`
     display: flex;
+    height: 1.5em;
     align-items: center;
     justify-content: start;
     margin-bottom: 0.25em;
@@ -19,17 +20,23 @@ export const Comment = () => {
     line-height: 0.94rem;
     margin-right: 0.5rem;
     text-decoration: underline;
+    letter-spacing: -0.02em;
   `;
   const UserTime = styled.span`
     color: #838489;
     font-family: Source Code Pro;
     font-size: 0.75em;
     line-height: 0.94rem;
+    letter-spacing: -0.02em;
   `;
   const CommentText = styled.span`
     display: block;
     text-align: left;
+    display: flex;
+    align-items: center;
+    justify-content: start;
     width: 18rem;
+    height: 4rem;
     color: #838489;
     font-family: Roboto;
     font-size: 0.75em;
