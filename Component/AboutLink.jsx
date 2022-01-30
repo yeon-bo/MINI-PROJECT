@@ -5,22 +5,23 @@ import { Karma } from "../Component/Karma.jsx";
 export const AboutLink = () => {
   const Help = styled.img`
     position: absolute;
-    height: 1.13em;
-    top: 3.2em;
+    height: 1.15em;
+    top: 3em;
+    left: ;
   `;
   const IntroTitle = styled.h3`
     color: #fff;
     font-family: ProductSansRegular;
     font-size: 1.5em;
     line-height: 1.82rem;
-    margin: 0.38rem 0 1.75rem 0;
+    margin: 0.2rem 0 1.75rem 0;
   `;
   const Intro = styled.p`
     color: #cecfd4;
     font-family: ProductSansRegular;
     font-size: 0.81em;
     line-height: 1rem;
-    margin: 0 1.25rem 2.5rem;
+    margin: 0 1.25rem 3rem;
     text-align: left;
     white-space: pre-wrap;
   `;
@@ -30,12 +31,12 @@ export const AboutLink = () => {
     font-family: ProductSansRegular;
     font-size: 1.38em;
     line-height: 1.67rem;
-    margin: 0 0 0.94rem 1.25rem;
+    margin: 0 0 0.9rem 1.25rem;
   `;
   const Content = styled.div`
     text-align: left;
     color: #fff;
-    margin: 0 1.1em 0 1.25em;
+    margin: 0 1.1em 2.94em 1.25em;
   `;
   const TitleSmall = styled.h5`
     display: inline-block;
