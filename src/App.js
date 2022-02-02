@@ -1,16 +1,21 @@
 import "./styles.css";
-
-import { Topbar } from "../Component/Topbar";
-import { Search } from "../Component/Search";
-import { InfoTab } from "../Component/InfoTab";
-import { CardTitle } from "../Component/CardTitle";
+import { Routes, Route } from "react-router-dom";
+import { Home } from "../Router/Home";
+import { About } from "../Router/About";
+import { Comments } from "../Router/Comments";
+import { Detail } from "../Router/Detail";
+import { UserInfo } from "../Router/UserInfo";
 
 export default function App() {
   return (
     <div className="App">
-      <Topbar />
-      <Search />
-      <InfoTab />
+      <Routes>
+        <Route path="/home" element={<Home />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/comments" element={<Comments />} />
+        <Route path="/detail" element={<Detail />} />
+        <Route path="/userinfo" element={<UserInfo />} />
+      </Routes>
     </div>
   );
 }

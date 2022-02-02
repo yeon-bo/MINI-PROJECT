@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import { Link } from "react-router-dom";
 
 import { Karma } from "../Component/Karma.jsx";
 import { Cardbar } from "../Component/Cardbar.jsx";
@@ -52,16 +53,20 @@ export const Newscard = () => {
   `;
   return (
     <Card>
-      <News>
-        <User>
-          <Karma />
-          <UserName>Cameron Williamson</UserName>
-        </User>
-        <UserTitle>
-          Washington state shuts down Amazon price-fixing program nationwide
-        </UserTitle>
-        <UserTime>3 hours ago</UserTime>
-      </News>
+      <Link to="/detail">
+        <News>
+          <User>
+            <Karma />
+            <Link to="/userinfo">
+              <UserName>Cameron Williamson</UserName>
+            </Link>
+          </User>
+          <UserTitle>
+            Washington state shuts down Amazon price-fixing program nationwide
+          </UserTitle>
+          <UserTime>3 hours ago</UserTime>
+        </News>
+      </Link>
       <Cardbar />
     </Card>
   );

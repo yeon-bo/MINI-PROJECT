@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import { Link } from "react-router-dom";
 
 export const Cardbar = () => {
   const Cardbar = styled.div`
@@ -8,7 +9,7 @@ export const Cardbar = () => {
     bottom: 0;
     display: flex;
   `;
-  const Link = styled.div`
+  const OutLink = styled.div`
     width: 45%;
     height: 1em;
     margin-left: 1em;
@@ -68,19 +69,21 @@ export const Cardbar = () => {
   `;
   return (
     <Cardbar>
-      <Link>
+      <OutLink>
         <LinkIcon src="./image/Link.png" alt="Link" />
         <LinkTitle>Giant Ant</LinkTitle>
-      </Link>
+      </OutLink>
       <Buttons>
         <KarmaButton>
           <Icon src="./image/Karma.png" alt="Karma" />
           <ButtonSpan>138</ButtonSpan>
         </KarmaButton>
-        <CommentButton>
-          <Icon src="./image/Comment.png" alt="Comment" />
-          <ButtonSpan>23</ButtonSpan>
-        </CommentButton>
+        <Link to="/comments">
+          <CommentButton>
+            <Icon src="./image/Comment.png" alt="Comment" />
+            <ButtonSpan>23</ButtonSpan>
+          </CommentButton>
+        </Link>
       </Buttons>
     </Cardbar>
   );

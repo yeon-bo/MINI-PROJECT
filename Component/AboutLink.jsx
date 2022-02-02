@@ -70,7 +70,7 @@ export const AboutLink = () => {
   `;
   return (
     <>
-      <Help src="./image/Help.png" Backallow="Help" />
+      <Help src="./image/Help.png" alt="Help" />
       <IntroTitle>About this site</IntroTitle>
       <Intro>
         {`This is a simple Hacker News clone, built with`}

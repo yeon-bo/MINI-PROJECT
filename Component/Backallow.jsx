@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import { Link } from "react-router-dom";
 
 export const Backallow = () => {
   const Backbar = styled.div`
@@ -14,7 +15,9 @@ export const Backallow = () => {
   `;
   return (
     <Backbar>
-      <Allow src="./image/Backallow.png" Backallow="Allow" />
+      <Link to="/home">
+        <Allow src="./image/Backallow.png" Backallow="Allow" />
+      </Link>
     </Backbar>
   );
 };

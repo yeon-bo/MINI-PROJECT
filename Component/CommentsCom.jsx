@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import { Link } from "react-router-dom";
 
 import { CommentsCont } from "../Component/CommentsCont.jsx";
 import { CommentsComRe } from "../Component/CommentsComRe.jsx";
@@ -39,7 +40,9 @@ export const CommentsCom = () => {
   return (
     <CommentCont>
       <UserBar>
-        <UserName>doctoboggan</UserName>
+        <Link to="/userinfo">
+          <UserName>doctoboggan</UserName>
+        </Link>
         <UserTime>30 minutes ago</UserTime>
         <AllowIcon src="./image/Allow.png" alt="Allow" />
       </UserBar>

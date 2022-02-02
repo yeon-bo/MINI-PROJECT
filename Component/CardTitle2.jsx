@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import { Link } from "react-router-dom";
 
 import { Cardbar } from "../Component/Cardbar.jsx";
 
@@ -25,16 +26,19 @@ export const CardTitle2 = () => {
     top: 1.54em;
     right: 0.88em;
   `;
+  const handleClick = () => {};
   return (
-    <Post>
-      <PostTitle>
-        <Title>
-          Metal Detectorist Discovers One of England’s Earliest Gold Coins in a
-          Farm Field
-        </Title>
-        <AllowIcon src="./image/Allow.png" alt="Allow" />
-      </PostTitle>
-      <Cardbar />
-    </Post>
+    <Link to="/detail" style={{ textDecoration: "none" }}>
+      <Post>
+        <PostTitle>
+          <Title>
+            Metal Detectorist Discovers One of England’s Earliest Gold Coins in
+            a Farm Field
+          </Title>
+          <AllowIcon src="./image/Allow.png" alt="Allow" />
+        </PostTitle>
+        <Cardbar />
+      </Post>
+    </Link>
   );
 };

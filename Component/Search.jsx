@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import styled from "@emotion/styled";
+import { Link } from "react-router-dom";
 
 export const Search = () => {
   const Search = styled.div`
@@ -55,13 +56,17 @@ export const Search = () => {
   `;
   return (
     <Search>
-      <Logo src="./image/logo.png" alt="logo" />
+      <Link to="/home">
+        <Logo src="./image/logo.png" alt="logo" />
+      </Link>
       <SearchBox>
         <SearchInput type="text" />
         <SearchIcon src="./image/Search.png" alt="Search" />
         <Placeholder>Search</Placeholder>
       </SearchBox>
-      <Help src="./image/Help.png" alt="Help" />
+      <Link to="/about">
+        <Help src="./image/Help.png" alt="Help" />
+      </Link>
     </Search>
   );
 };
