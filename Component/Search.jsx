@@ -56,7 +56,7 @@ export const Search = () => {
   `;
   return (
     <Search>
-      <Link to="/home">
+      <Link to="/">
         <Logo src="./image/logo.png" alt="logo" />
       </Link>
       <SearchBox>

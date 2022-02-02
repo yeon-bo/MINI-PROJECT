@@ -6,7 +6,7 @@ export const AboutLink = () => {
   const Help = styled.img`
     position: absolute;
     height: 1.15em;
-    top: 3em;
+    top: 2em;
     left: ;
   `;
   const IntroTitle = styled.h3`

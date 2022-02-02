@@ -1,7 +1,5 @@
 import styled from "@emotion/styled";
 
-import { CommentsCont } from "../Component/CommentsCont.jsx";
-
 export const CommentsCom2 = () => {
   const CommentCont = styled.div`
     box-sizing: border-box;
