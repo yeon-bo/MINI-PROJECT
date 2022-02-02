@@ -6,7 +6,7 @@ import { Backallow } from "../Component/Backallow";
 import { CommentsCom } from "../Component/CommentsCom";
 import { CommentsCom2 } from "../Component/CommentsCom2";
 
-export const CommentsPage = () => {
+export const Comments = () => {
   const TitleBack = styled.div`
     height: 4.15em;
     display: flex;
