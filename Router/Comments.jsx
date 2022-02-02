@@ -1,9 +1,12 @@
+import "../src/styles.css";
 import styled from "@emotion/styled";
 
-import { CommentsCom } from "../Component/CommentsCom.jsx";
-import { CommentsCom2 } from "../Component/CommentsCom2.jsx";
+import { Link } from "react-router-dom";
+import { Backallow } from "../Component/Backallow";
+import { CommentsCom } from "../Component/CommentsCom";
+import { CommentsCom2 } from "../Component/CommentsCom2";
 
-export const Comments = () => {
+export const CommentsPage = () => {
   const TitleBack = styled.div`
     height: 4.15em;
     display: flex;
@@ -20,12 +23,13 @@ export const Comments = () => {
     margin-left: 1.25rem;
   `;
   return (
-    <>
+    <div className="App">
+      <Backallow />
       <TitleBack>
         <Title>Comments</Title>
       </TitleBack>
       <CommentsCom2 />
       <CommentsCom />
-    </>
+    </div>
   );
 };
