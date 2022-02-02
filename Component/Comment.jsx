@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import { Link } from "react-router-dom";
 
 export const Comment = () => {
   const Comment = styled.div`
@@ -46,7 +47,9 @@ export const Comment = () => {
   return (
     <Comment>
       <UserCont>
-        <UserName>Cameron Williamson</UserName>
+        <Link to="/userinfo">
+          <UserName>Cameron Williamson</UserName>
+        </Link>
         <UserTime>11 minutes ago</UserTime>
       </UserCont>
       <CommentText>

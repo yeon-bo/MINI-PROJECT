@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import { Link } from "react-router-dom";
 
 export const DetailBtn = () => {
   const Background = styled.div`
@@ -49,9 +50,11 @@ export const DetailBtn = () => {
   return (
     <Background>
       <BtnCont>
-        <CommentBtn>
-          <BntText>34 comments</BntText>
-        </CommentBtn>
+        <Link to="/comments" style={{ textDecoration: "none" }}>
+          <CommentBtn>
+            <BntText>34 comments</BntText>
+          </CommentBtn>
+        </Link>
         <LinkBtn>
           <LinkIcon src="./image/Link2.png" Backallow="Link2" />
         </LinkBtn>
