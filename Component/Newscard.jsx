@@ -1,10 +1,25 @@
 import styled from "@emotion/styled";
 import { Link } from "react-router-dom";
+import { useState, useEffect } from "react";
 
 import { Karma } from "../Component/Karma.jsx";
 import { Cardbar } from "../Component/Cardbar.jsx";
 
 export const Newscard = () => {
+  const [loading, setLoading] = useState(true);
+  const [post, setPost] = useState([]);
+  const getPost = async () => {
+    const json = await (
+      await fetch(
+        "https://hacker-news.firebaseio.com/v0/item/8863.json?print=pretty"
+      )
+    ).json();
+    setPost(json);
+    setLoading(false);
+  };
+  useEffect(() => {
+    getPost();
+  }, []);
   const Card = styled.div`
     width: 17.75em;
     height: 100%;
@@ -58,12 +73,10 @@ export const Newscard = () => {
           <User>
             <Karma />
             <Link to="/userinfo">
-              <UserName>Cameron Williamson</UserName>
+              <UserName>{post.by}</UserName>
             </Link>
           </User>
-          <UserTitle>
-            Washington state shuts down Amazon price-fixing program nationwide
-          </UserTitle>
+          <UserTitle>{post.title}</UserTitle>
           <UserTime>3 hours ago</UserTime>
         </News>
       </Link>

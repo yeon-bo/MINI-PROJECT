@@ -3,7 +3,6 @@ import styled from "@emotion/styled";
 
 import { Backallow } from "../Component/Backallow";
 import { CommentsCom } from "../Component/CommentsCom";
-import { CommentsCom2 } from "../Component/CommentsCom2";
 
 export const Comments = () => {
   const TitleBack = styled.div`
@@ -27,7 +26,6 @@ export const Comments = () => {
       <TitleBack>
         <Title>Comments</Title>
       </TitleBack>
-      <CommentsCom2 />
       <CommentsCom />
     </div>
   );
