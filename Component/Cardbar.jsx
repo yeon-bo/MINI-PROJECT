@@ -78,7 +78,7 @@ export const Cardbar = () => {
           <Icon src="./image/Karma.png" alt="Karma" />
           <ButtonSpan>138</ButtonSpan>
         </KarmaButton>
-        <Link to="/comments">
+        <Link to="/comments" style={{ textDecoration: "none" }}>
           <CommentButton>
             <Icon src="./image/Comment.png" alt="Comment" />
             <ButtonSpan>23</ButtonSpan>

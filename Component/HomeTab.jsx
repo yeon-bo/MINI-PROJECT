@@ -1,7 +1,6 @@
 import styled from "@emotion/styled";
 
 import { CardTitle } from "../Component/CardTitle.jsx";
-import { CardTitle2 } from "../Component/CardTitle2.jsx";
 
 export const HomeTab = () => {
   const TabBox = styled.div`
@@ -37,7 +36,6 @@ export const HomeTab = () => {
         <TabTitle>Show</TabTitle>
       </Tab>
       <PostBox>
-        <CardTitle2 />
         <CardTitle />
       </PostBox>
     </TabBox>

@@ -1,6 +1,10 @@
 import styled from "@emotion/styled";
+import React, { useState } from "react";
+
+import { CommentsComRe } from "../Component/CommentsComRe.jsx";
 
 export const CommentsCont = () => {
+  const [showComment, setShowComment] = useState(false);
   const UserText = styled.span`
     display: block;
     text-align: left;
@@ -22,13 +26,17 @@ export const CommentsCont = () => {
     line-height: 0.94rem;
     padding: 0;
   `;
+  const onClick = () => {
+    setShowComment(!showComment);
+  };
   return (
     <>
       <UserText>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Porttitor est
         ullamcorper adipiscing vestibulum.
       </UserText>
-      <More>more..</More>
+      <More onClick={onClick}>more..</More>
+      {showComment && <CommentsComRe />}
     </>
   );
 };

@@ -1,10 +1,11 @@
 import styled from "@emotion/styled";
 import { Link } from "react-router-dom";
+import React, { useState } from "react";
 
 import { CommentsCont } from "../Component/CommentsCont.jsx";
-import { CommentsComRe } from "../Component/CommentsComRe.jsx";
 
 export const CommentsCom = () => {
+  const [showComment, setShowComment] = useState(false);
   const CommentCont = styled.div`
     box-sizing: border-box;
     border-bottom: 1px solid #38393d;
@@ -37,6 +38,9 @@ export const CommentsCom = () => {
     transform: rotate(180deg);
     right: 0;
   `;
+  const onClick = () => {
+    setShowComment(!showComment);
+  };
   return (
     <CommentCont>
       <UserBar>
@@ -44,10 +48,9 @@ export const CommentsCom = () => {
           <UserName>doctoboggan</UserName>
         </Link>
         <UserTime>30 minutes ago</UserTime>
-        <AllowIcon src="./image/Allow.png" alt="Allow" />
+        <AllowIcon src="./image/Allow.png" alt="Allow" onClick={onClick} />
       </UserBar>
-      <CommentsCont />
-      <CommentsComRe />
+      {showComment && <CommentsCont />}
     </CommentCont>
   );
 };

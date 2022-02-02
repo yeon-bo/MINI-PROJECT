@@ -15,8 +15,8 @@ export const Backallow = () => {
   `;
   return (
     <Backbar>
-      <Link to="/home">
-        <Allow src="./image/Backallow.png" Backallow="Allow" />
+      <Link to="/">
+        <Allow src="./image/Backallow.png" alt="BackAllow" />
       </Link>
     </Backbar>
   );
