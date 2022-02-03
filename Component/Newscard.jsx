@@ -5,21 +5,7 @@ import { useState, useEffect } from "react";
 import { Karma } from "../Component/Karma.jsx";
 import { Cardbar } from "../Component/Cardbar.jsx";
 
-export const Newscard = () => {
-  const [loading, setLoading] = useState(true);
-  const [post, setPost] = useState([]);
-  const getPost = async () => {
-    const json = await (
-      await fetch(
-        "https://hacker-news.firebaseio.com/v0/item/8863.json?print=pretty"
-      )
-    ).json();
-    setPost(json);
-    setLoading(false);
-  };
-  useEffect(() => {
-    getPost();
-  }, []);
+export const Newscard = ({ by, title, karma, comment, url }) => {
   const Card = styled.div`
     width: 17.75em;
     height: 100%;
@@ -73,14 +59,14 @@ export const Newscard = () => {
           <User>
             <Karma />
             <Link to="/userinfo">
-              <UserName>{post.by}</UserName>
+              <UserName>{by}</UserName>
             </Link>
           </User>
-          <UserTitle>{post.title}</UserTitle>
+          <UserTitle>{title}</UserTitle>
           <UserTime>3 hours ago</UserTime>
         </News>
       </Link>
-      <Cardbar />
+      <Cardbar karma={karma} comment={comment} url={url} />
     </Card>
   );
 };

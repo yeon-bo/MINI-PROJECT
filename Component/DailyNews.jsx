@@ -1,8 +1,23 @@
 import styled from "@emotion/styled";
+import { useState, useEffect } from "react";
 
 import { Newscard } from "../Component/Newscard.jsx";
 
 export const DailyNews = () => {
+  const [loading, setLoading] = useState(true);
+  const [post, setPost] = useState([]);
+  const getPost = async () => {
+    const json = await (
+      await fetch(
+        "https://hacker-news.firebaseio.com/v0/item/8863.json?print=pretty"
+      )
+    ).json();
+    setPost(json);
+    setLoading(false);
+  };
+  useEffect(() => {
+    getPost();
+  }, []);
   const Title = styled.h3`
     font-family: ProductSansBold;
     font-size: 1.75em;
@@ -26,7 +41,13 @@ export const DailyNews = () => {
       <Title>Daily News</Title>
       <Card_cont>
         <Cards>
-          <Newscard />
+          <Newscard
+            title={post.title}
+            by={post.by}
+            karma={post.score}
+            // comment={post.kids.length}
+            url={post.url}
+          />
           <Newscard />
         </Cards>
       </Card_cont>
