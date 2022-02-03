@@ -5,7 +5,7 @@ import React, { useState } from "react";
 import { Comment } from "../Component/Comment.jsx";
 import { Cardbar } from "../Component/Cardbar.jsx";
 
-export const CardTitle = () => {
+export const CardTitle = ({ title, by, karma, comment, url }) => {
   const [showComment, setShowComment] = useState(false);
   const Post = styled.div`
     background-color: #2c2d32;
@@ -37,15 +37,12 @@ export const CardTitle = () => {
     <Post>
       <PostTitle>
         <Link to="/detail" style={{ textDecoration: "none" }}>
-          <Title>
-            Metal Detectorist Discovers One of England’s Earliest Gold Coins in
-            a Farm Field
-          </Title>
+          <Title>{title}</Title>
         </Link>
         <AllowIcon src="./image/Allow.png" alt="Allow" onClick={onClick} />
       </PostTitle>
       {showComment && <Comment />}
-      <Cardbar />
+      <Cardbar karma={karma} comment={comment} url={url} />
     </Post>
   );
 };

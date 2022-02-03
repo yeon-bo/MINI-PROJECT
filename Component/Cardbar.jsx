@@ -1,7 +1,7 @@
 import styled from "@emotion/styled";
 import { Link } from "react-router-dom";
 
-export const Cardbar = () => {
+export const Cardbar = ({ karma, comment, url }) => {
   const Cardbar = styled.div`
     height: 2em;
     border-top: 1px solid #38393d;
@@ -9,7 +9,9 @@ export const Cardbar = () => {
     bottom: 0;
     display: flex;
   `;
-  const OutLink = styled.div`
+  const OutLink = styled.a`
+    display: block;
+    text-decoration: none;
     width: 45%;
     height: 1em;
     margin-left: 1em;
@@ -19,6 +21,7 @@ export const Cardbar = () => {
     display: flex;
     align-items: center;
     justify-content: start;
+    cursor: pointer;
   `;
   const LinkIcon = styled.img`
     height: 0.42em;
@@ -69,19 +72,19 @@ export const Cardbar = () => {
   `;
   return (
     <Cardbar>
-      <OutLink>
+      <OutLink target="_blank" href={url}>
         <LinkIcon src="./image/Link.png" alt="Link" />
         <LinkTitle>Giant Ant</LinkTitle>
       </OutLink>
       <Buttons>
         <KarmaButton>
           <Icon src="./image/Karma.png" alt="Karma" />
-          <ButtonSpan>138</ButtonSpan>
+          <ButtonSpan>{karma}</ButtonSpan>
         </KarmaButton>
         <Link to="/comments" style={{ textDecoration: "none" }}>
           <CommentButton>
             <Icon src="./image/Comment.png" alt="Comment" />
-            <ButtonSpan>23</ButtonSpan>
+            <ButtonSpan>{comment}</ButtonSpan>
           </CommentButton>
         </Link>
       </Buttons>

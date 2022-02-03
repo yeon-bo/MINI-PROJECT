@@ -1,8 +1,37 @@
 import styled from "@emotion/styled";
+import { useState, useEffect } from "react";
 
 import { CardTitle } from "../Component/CardTitle.jsx";
 
 export const HomeTab = () => {
+  const [loading, setLoading] = useState(true);
+  const [arrPost, setArrPost] = useState([]);
+  const [post, setPost] = useState([]);
+  const getArr = async () => {
+    const json = await (
+      await fetch("https://hacker-news.firebaseio.com/v0/topstories.json")
+    ).json();
+    setArrPost(json);
+  };
+  useEffect(() => {
+    getArr();
+  }, []);
+  const url = arrPost
+    .slice(0, 9)
+    .map(
+      (Post) => "https://hacker-news.firebaseio.com/v0/item/" + Post + ".json"
+    );
+  const getPost = async () => {
+    const json = await (await fetch({ url })).json();
+    setPost(json);
+    setLoading(false);
+  };
+  useEffect(() => {
+    getPost();
+  }, []);
+
+  console.log(post);
+
   const TabBox = styled.div`
     display: inline-block;
     width: 20em;
@@ -36,7 +65,14 @@ export const HomeTab = () => {
         <TabTitle>Show</TabTitle>
       </Tab>
       <PostBox>
-        <CardTitle />
+        {post.map((post) => (
+          <CardTitle
+            title={post.title}
+            karma={post.score}
+            // comment={post.kids.length}
+            url={post.url}
+          />
+        ))}
       </PostBox>
     </TabBox>
   );
