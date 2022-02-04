@@ -21,8 +21,12 @@ export const HomeTab = () => {
     .map(
       (Post) => "https://hacker-news.firebaseio.com/v0/item/" + Post + ".json"
     );
+  console.log(url);
   const getPost = async () => {
-    const json = await (await fetch({ url })).json();
+    const json = await (
+      await fetch("https://hacker-news.firebaseio.com/v0/item/8863.json")
+    ).json();
+    // const json = await (await fetch({ url })).json();
     setPost(json);
     setLoading(false);
   };
@@ -65,14 +69,14 @@ export const HomeTab = () => {
         <TabTitle>Show</TabTitle>
       </Tab>
       <PostBox>
-        {post.map((post) => (
-          <CardTitle
-            title={post.title}
-            karma={post.score}
-            // comment={post.kids.length}
-            url={post.url}
-          />
-        ))}
+        {/* {post.map((post) => ( */}
+        <CardTitle
+          title={post.title}
+          karma={post.score}
+          // comment={post.kids.length}
+          url={post.url}
+        />
+        {/* ))} */}
       </PostBox>
     </TabBox>
   );
