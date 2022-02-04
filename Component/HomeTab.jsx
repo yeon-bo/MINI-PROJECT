@@ -6,7 +6,11 @@ import { CardTitle } from "../Component/CardTitle.jsx";
 export const HomeTab = () => {
   const [loading, setLoading] = useState(true);
   const [arrPost, setArrPost] = useState([]);
-  const [post, setPost] = useState([]);
+  const [posts, setPost] = useState([]);
+
+  const url = arrPost
+    .slice(0, 9)
+    .map((Post) => `https://hacker-news.firebaseio.com/v0/item/${Post}.json`);
   const getArr = async () => {
     const json = await (
       await fetch("https://hacker-news.firebaseio.com/v0/topstories.json")
@@ -16,17 +20,8 @@ export const HomeTab = () => {
   useEffect(() => {
     getArr();
   }, []);
-  const url = arrPost
-    .slice(0, 9)
-    .map(
-      (Post) => "https://hacker-news.firebaseio.com/v0/item/" + Post + ".json"
-    );
-  console.log(url);
   const getPost = async () => {
-    const json = await (
-      await fetch("https://hacker-news.firebaseio.com/v0/item/8863.json")
-    ).json();
-    // const json = await (await fetch({ url })).json();
+    const json = await (await fetch(url[0])).json();
     setPost(json);
     setLoading(false);
   };
@@ -34,7 +29,7 @@ export const HomeTab = () => {
     getPost();
   }, []);
 
-  console.log(post);
+  console.log(posts);
 
   const TabBox = styled.div`
     display: inline-block;
@@ -69,14 +64,14 @@ export const HomeTab = () => {
         <TabTitle>Show</TabTitle>
       </Tab>
       <PostBox>
-        {/* {post.map((post) => ( */}
+        {/* {loading ? (<h3>Loding</h3>) : (posts.map((post) => ( */}
         <CardTitle
-          title={post.title}
-          karma={post.score}
-          // comment={post.kids.length}
-          url={post.url}
+          title={posts.title}
+          karma={posts.score}
+          comment={posts.kids}
+          url={posts.url}
         />
-        {/* ))} */}
+        {/* )))} */}
       </PostBox>
     </TabBox>
   );
