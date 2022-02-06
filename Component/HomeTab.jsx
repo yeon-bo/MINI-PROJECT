@@ -1,36 +1,17 @@
 import styled from "@emotion/styled";
 import { useState, useEffect } from "react";
 
-import { CardTitle } from "../Component/CardTitle.jsx";
+import { TabCard } from "../Component/TabCard.jsx";
 
 export const HomeTab = () => {
   const [loading, setLoading] = useState(true);
   const [arrPost, setArrPost] = useState([]);
-  const [posts, setPost] = useState([]);
-
-  const url = arrPost
-    .slice(0, 9)
-    .map((Post) => `https://hacker-news.firebaseio.com/v0/item/${Post}.json`);
-  const getArr = async () => {
-    const json = await (
-      await fetch("https://hacker-news.firebaseio.com/v0/topstories.json")
-    ).json();
-    setArrPost(json);
-  };
   useEffect(() => {
-    getArr();
-  }, []);
-  const getPost = async () => {
-    const json = await (await fetch(url[0])).json();
-    setPost(json);
+    fetch("https://hacker-news.firebaseio.com/v0/topstories.json")
+      .then((res) => res.json())
+      .then((data) => setArrPost(data.slice(0, 10)));
     setLoading(false);
-  };
-  useEffect(() => {
-    getPost();
   }, []);
-
-  console.log(posts);
-
   const TabBox = styled.div`
     display: inline-block;
     width: 20em;
@@ -54,7 +35,6 @@ export const HomeTab = () => {
     font-family: ProductSansRegular;
     font-size: 1em;
   `;
-  const PostBox = styled.div``;
   return (
     <TabBox>
       <Tab>
@@ -63,16 +43,7 @@ export const HomeTab = () => {
         <TabTitle>Ask</TabTitle>
         <TabTitle>Show</TabTitle>
       </Tab>
-      <PostBox>
-        {/* {loading ? (<h3>Loding</h3>) : (posts.map((post) => ( */}
-        <CardTitle
-          title={posts.title}
-          karma={posts.score}
-          comment={posts.kids}
-          url={posts.url}
-        />
-        {/* )))} */}
-      </PostBox>
+      {loading ? null : <TabCard arrPost={arrPost} />}
     </TabBox>
   );
 };
