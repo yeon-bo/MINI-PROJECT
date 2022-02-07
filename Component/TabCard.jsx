@@ -5,32 +5,37 @@ import { CardTitle } from "../Component/CardTitle.jsx";
 
 export const TabCard = (arrPost) => {
   const [loading, setLoading] = useState(true);
+  const [arrPosts, setArrPosts] = useState([arrPost.arrPost]);
   const [posts, setPost] = useState([]);
+  const url = () => {
+    arrPosts.map((post) => {
+      fetch(`https://hacker-news.firebaseio.com/v0/item/${post[0]}.json`)
+        .then((response) => response.json())
+        .then((data) => setPost([...posts, data]));
+      setLoading(false);
+    });
+  };
   useEffect(() => {
-    fetch(`https://hacker-news.firebaseio.com/v0/item/${posts}.json`)
-      .then((response) => response.json())
-      .then((data) => setPost(data));
-    setLoading(false);
+    url();
   }, []);
-  //   fetch(`https://hacker-news.firebaseio.com/v0/item/${arrPost.arrPost}.json`)
-  //     .then((response) => response.json())
-  //     .then((data) => setPost(data));
-  //   setLoading(false);
-  // }, []);
-  console.log(arrPost.arrPost);
+  console.log(arrPosts);
   console.log(posts);
 
   const PostBox = styled.div``;
   return (
     <PostBox>
-      {/* {loading ? null : (posts.map((post) => ( */}
-      <CardTitle
-        title={posts.title}
-        karma={posts.score}
-        comment={posts.kids}
-        url={posts.url}
-      />
-      {/* )))} */}
+      {loading ? (
+        <h4>loading</h4>
+      ) : (
+        posts.map((post) => (
+          <CardTitle
+            title={post.title}
+            karma={post.score}
+            comment={post.kids}
+            url={post.url}
+          />
+        ))
+      )}
     </PostBox>
   );
 };
