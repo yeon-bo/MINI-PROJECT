@@ -3,11 +3,12 @@ import { useState, useEffect } from "react";
 
 import { CardTitle } from "../Component/CardTitle.jsx";
 
-export const TabCard = (arrPost) => {
+export const TabCard = ({ arrPost, count }) => {
   const [loading, setLoading] = useState(true);
-  const [arrPosts, setArrPosts] = useState([arrPost.arrPost]);
+  const [arrPosts, setArrPosts] = useState([arrPost]);
   const [posts, setPost] = useState([]);
-  const url = () => {
+  console.log(arrPosts);
+  const fetchData = () => {
     arrPosts[0].map((post, index) => {
       fetch(`https://hacker-news.firebaseio.com/v0/item/${post}.json`)
         .then((response) => response.json())
@@ -15,16 +16,17 @@ export const TabCard = (arrPost) => {
           posts[index] = data;
           if (data.kids != undefined) data.CommentsLength = data.kids.length;
           else data.CommentsLength = 0;
-          if (posts.length > 9) {
+          if (posts.length >= count * 10) {
             setLoading(false);
-            console.log(posts);
+            // console.log(posts);
           }
         });
     });
   };
+  console.log(posts);
   useEffect(() => {
-    url();
-  }, []);
+    fetchData();
+  }, [count]);
 
   const PostBox = styled.div``;
   return (

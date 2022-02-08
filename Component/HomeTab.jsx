@@ -4,14 +4,47 @@ import { useState, useEffect } from "react";
 import { TabCard } from "../Component/TabCard.jsx";
 
 export const HomeTab = () => {
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState("nothing");
   const [arrPost, setArrPost] = useState([]);
+  const [slicePost, setSlicePost] = useState([]);
+  const [count, setCount] = useState(1);
+  const fetchData = async () => {
+    try {
+      const response = await fetch(
+        "https://hacker-news.firebaseio.com/v0/topstories.json"
+      );
+      const data = await response.json();
+      setArrPost(data);
+      setLoading("loding");
+    } catch (error) {
+      console.log(error);
+    }
+  };
   useEffect(() => {
-    fetch("https://hacker-news.firebaseio.com/v0/topstories.json")
-      .then((res) => res.json())
-      .then((data) => setArrPost(data.slice(0, 10)));
-    setLoading(false);
+    fetchData();
   }, []);
+  window.addEventListener("scroll", (e) => {
+    e.stopPropagation();
+    let scrollLocation = document.documentElement.scrollTop;
+    let windowHeight = window.innerHeight;
+    let fullHeight = document.body.scrollHeight;
+
+    if (scrollLocation + windowHeight >= fullHeight) {
+      console.log("끝");
+      setCount(count + 1);
+      console.log(count);
+      console.log(arrPost);
+    }
+  });
+  if (loading !== "nothing") {
+    if (loading === "loding") {
+      setSlicePost(arrPost.slice(0, 10));
+      console.log(slicePost);
+      setLoading("finish");
+    }
+  }
+  console.log(loading);
+  console.log(slicePost);
   const TabBox = styled.div`
     display: inline-block;
     width: 20em;
@@ -43,7 +76,9 @@ export const HomeTab = () => {
         <TabTitle>Ask</TabTitle>
         <TabTitle>Show</TabTitle>
       </Tab>
-      {loading ? null : <TabCard arrPost={arrPost} />}
+      {loading === "finish" ? null : (
+        <TabCard arrPost={slicePost} count={count} />
+      )}
     </TabBox>
   );
 };
