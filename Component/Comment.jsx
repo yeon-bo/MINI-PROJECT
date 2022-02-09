@@ -1,7 +1,29 @@
 import styled from "@emotion/styled";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
-export const Comment = () => {
+export const Comment = ({ kids }) => {
+  const [loading, setLoading] = useState(true);
+  const [post, setPost] = useState([]);
+  const [text, setText] = useState("");
+  const fetchData = async () => {
+    try {
+      const response = await fetch(
+        `https://hacker-news.firebaseio.com/v0/item/${kids[0]}.json`
+      );
+      const data = await response.json();
+      setPost(data);
+      setText(data.text);
+      console.log(data);
+      console.log(data.text);
+      setLoading(false);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  useEffect(() => {
+    fetchData();
+  }, []);
   const Comment = styled.div`
     border-top: 1px solid #38393d;
     padding: 1em;
@@ -30,15 +52,17 @@ export const Comment = () => {
     line-height: 0.94rem;
     letter-spacing: -0.02em;
   `;
-  const CommentText = styled.span`
-    display: block;
+  const CommentText = styled.p`
+    display: -webkit-box;
     text-align: left;
-    display: flex;
     align-items: center;
     justify-content: start;
+    text-overflow: ellipsis;
     width: 18rem;
     height: 4rem;
     overflow: hidden;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
     color: #838489;
     font-family: Roboto;
     font-size: 0.75em;
@@ -48,15 +72,13 @@ export const Comment = () => {
     <Comment>
       <UserCont>
         <Link to="/userinfo">
-          <UserName>Cameron Williamson</UserName>
+          <UserName user={post.id}>{post.by}</UserName>
         </Link>
         <UserTime>11 minutes ago</UserTime>
       </UserCont>
-      <CommentText>
-        Completely agree. Here's another example: BitDefender (antivirus) passes
-        your email and MD5 of your password in the hash when you want to go to
-        your dashboard.
-      </CommentText>
+      {loading ? null : (
+        <CommentText dangerouslySetInnerHTML={{ __html: text }}></CommentText>
+      )}
     </Comment>
   );
 };

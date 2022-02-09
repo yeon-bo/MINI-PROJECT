@@ -5,7 +5,7 @@ import React, { useState } from "react";
 import { Comment } from "../Component/Comment.jsx";
 import { Cardbar } from "../Component/Cardbar.jsx";
 
-export const CardTitle = ({ title, by, karma, comment, url }) => {
+export const CardTitle = ({ title, by, karma, comment, url, kids }) => {
   const [showComment, setShowComment] = useState(false);
   const Post = styled.div`
     background-color: #2c2d32;
@@ -42,7 +42,7 @@ export const CardTitle = ({ title, by, karma, comment, url }) => {
         </Link>
         <AllowIcon src="./image/Allow.png" alt="Allow" onClick={onClick} />
       </PostTitle>
-      {showComment && <Comment />}
+      {showComment && <Comment kids={kids} />}
       <Cardbar karma={karma} comment={comment} url={url} />
     </Post>
   );
