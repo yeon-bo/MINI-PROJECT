@@ -7,7 +7,6 @@ export const TabCard = ({ arrPost, count }) => {
   const [loading, setLoading] = useState(true);
   const [arrPosts, setArrPosts] = useState([arrPost]);
   const [posts, setPost] = useState([]);
-  console.log(arrPosts);
   const fetchData = () => {
     arrPosts[0].map((post, index) => {
       fetch(`https://hacker-news.firebaseio.com/v0/item/${post}.json`)
@@ -26,21 +25,68 @@ export const TabCard = ({ arrPost, count }) => {
   console.log(posts);
   useEffect(() => {
     fetchData();
-  }, [count]);
+  }, []);
 
-  const PostBox = styled.div``;
+  const PostBoxCont = styled.div`
+    position: relative;
+    display: flex;
+  `;
+  const PostBox = styled.div`
+    float: left;
+    + div {
+      margin-left: 2.5em;
+    }
+  `;
   return (
-    <PostBox>
-      {loading
-        ? null
-        : posts.map((post) => (
-            <CardTitle
-              title={post.title}
-              karma={post.score}
-              comment={post.CommentsLength}
-              url={post.url}
-            />
-          ))}
-    </PostBox>
+    <PostBoxCont>
+      <PostBox>
+        {loading
+          ? null
+          : posts.map((post) => (
+              <CardTitle
+                title={post.title}
+                karma={post.score}
+                comment={post.CommentsLength}
+                url={post.url}
+              />
+            ))}
+      </PostBox>
+      <PostBox>
+        {loading
+          ? null
+          : posts.map((post) => (
+              <CardTitle
+                title={post.title}
+                karma={post.score}
+                comment={post.CommentsLength}
+                url={post.url}
+              />
+            ))}
+      </PostBox>
+      <PostBox>
+        {loading
+          ? null
+          : posts.map((post) => (
+              <CardTitle
+                title={post.title}
+                karma={post.score}
+                comment={post.CommentsLength}
+                url={post.url}
+              />
+            ))}
+      </PostBox>
+      <PostBox>
+        {loading
+          ? null
+          : posts.map((post) => (
+              <CardTitle
+                title={post.title}
+                karma={post.score}
+                comment={post.CommentsLength}
+                url={post.url}
+              />
+            ))}
+      </PostBox>
+    </PostBoxCont>
   );
 };

@@ -10,6 +10,7 @@ export const CardTitle = ({ title, by, karma, comment, url }) => {
   const Post = styled.div`
     background-color: #2c2d32;
     margin-top: 0.75em;
+    width: 20em;
   `;
   const PostTitle = styled.div`
     position: relative;
