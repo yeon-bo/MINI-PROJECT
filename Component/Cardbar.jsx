@@ -2,7 +2,7 @@ import styled from "@emotion/styled";
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 
-export const Cardbar = ({ karma, comment, url, kids, id }) => {
+export const Cardbar = ({ karma, comment, url, kids, id, urlTitle }) => {
   const Cardbar = styled.div`
     height: 2em;
     border-top: 1px solid #38393d;
@@ -74,12 +74,12 @@ export const Cardbar = ({ karma, comment, url, kids, id }) => {
   return (
     <Cardbar>
       <OutLink target="_blank" href={url}>
-        <LinkIcon src="./image/Link.png" alt="Link" />
-        <LinkTitle>Giant Ant</LinkTitle>
+        <LinkIcon src="../image/Link.png" alt="Link" />
+        <LinkTitle>{urlTitle}</LinkTitle>
       </OutLink>
       <Buttons>
         <KarmaButton>
-          <Icon src="./image/Karma.png" alt="Karma" />
+          <Icon src="../image/Karma.png" alt="Karma" />
           <ButtonSpan>{karma}</ButtonSpan>
         </KarmaButton>
         <Link
@@ -92,7 +92,7 @@ export const Cardbar = ({ karma, comment, url, kids, id }) => {
           style={{ textDecoration: "none" }}
         >
           <CommentButton>
-            <Icon src="./image/Comment.png" alt="Comment" />
+            <Icon src="../image/Comment.png" alt="Comment" />
             <ButtonSpan>{comment}</ButtonSpan>
           </CommentButton>
         </Link>

@@ -2,10 +2,37 @@ import styled from "@emotion/styled";
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 
+import { SuperKarma } from "../Component/SuperKarma.jsx";
+import { NormalKarma } from "../Component/NormalKarma.jsx";
 import { Karma } from "../Component/Karma.jsx";
 import { Cardbar } from "../Component/Cardbar.jsx";
 
-export const Newscard = ({ by, title, karma, comment, url }) => {
+export const Newscard = ({ by, title, karma, comment, url, time, kids }) => {
+  function timeForToday(value) {
+    const today = new Date();
+    const timeValue = new Date(value * 1000);
+
+    const betweenTime = Math.floor(
+      (today.getTime() - timeValue.getTime()) / 1000 / 60
+    );
+    if (betweenTime < 1) return "recent";
+    if (betweenTime < 60) {
+      return `${betweenTime} minutes ago`;
+    }
+
+    const betweenTimeHour = Math.floor(betweenTime / 60);
+    if (betweenTimeHour < 24) {
+      return `${betweenTimeHour} hours ago`;
+    }
+
+    const betweenTimeDay = Math.floor(betweenTime / 60 / 24);
+    if (betweenTimeDay < 365) {
+      return `${betweenTimeDay} days ago`;
+    }
+
+    return `${Math.floor(betweenTimeDay / 365)} years ago`;
+  }
+
   const Card = styled.div`
     width: 17.75em;
     height: 100%;
@@ -57,16 +84,28 @@ export const Newscard = ({ by, title, karma, comment, url }) => {
       <Link to="/detail">
         <News>
           <User>
-            <Karma />
-            <Link to="/userinfo">
+            {karma >= 30 ? (
+              karma > 36100 ? (
+                <SuperKarma />
+              ) : (
+                <NormalKarma />
+              )
+            ) : (
+              <Karma />
+            )}
+            <Link
+              to={{
+                pathname: `/userinfo/${by}`
+              }}
+            >
               <UserName>{by}</UserName>
             </Link>
           </User>
           <UserTitle>{title}</UserTitle>
-          <UserTime>3 hours ago</UserTime>
+          <UserTime>{timeForToday(time)}</UserTime>
         </News>
       </Link>
-      <Cardbar karma={karma} comment={comment} url={url} />
+      <Cardbar karma={karma} comment={comment} url={url} by={by} kids={kids} />
     </Card>
   );
 };

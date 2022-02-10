@@ -56,7 +56,7 @@ export const DetailBtn = () => {
           </CommentBtn>
         </Link>
         <LinkBtn>
-          <LinkIcon src="./image/Link2.png" Backallow="Link2" />
+          <LinkIcon src="../image/Link2.png" Backallow="Link2" />
         </LinkBtn>
       </BtnCont>
     </Background>

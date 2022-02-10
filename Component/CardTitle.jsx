@@ -5,7 +5,15 @@ import React, { useState } from "react";
 import { Comment } from "../Component/Comment.jsx";
 import { Cardbar } from "../Component/Cardbar.jsx";
 
-export const CardTitle = ({ title, id, karma, comment, url, kids }) => {
+export const CardTitle = ({
+  title,
+  id,
+  karma,
+  comment,
+  url,
+  kids,
+  urlTitle
+}) => {
   const [showComment, setShowComment] = useState(false);
   const Post = styled.div`
     background-color: #2c2d32;
@@ -37,13 +45,28 @@ export const CardTitle = ({ title, id, karma, comment, url, kids }) => {
   return (
     <Post>
       <PostTitle>
-        <Link to="/detail" style={{ textDecoration: "none" }}>
+        <Link
+          to={{
+            pathname: `/detail/${kids}`,
+            state: {
+              kids: { kids }
+            }
+          }}
+          style={{ textDecoration: "none" }}
+        >
           <Title>{title}</Title>
         </Link>
-        <AllowIcon src="./image/Allow.png" alt="Allow" onClick={onClick} />
+        <AllowIcon src="../image/Allow.png" alt="Allow" onClick={onClick} />
       </PostTitle>
       {showComment && <Comment kids={kids} />}
-      <Cardbar karma={karma} comment={comment} url={url} kids={kids} id={id} />
+      <Cardbar
+        karma={karma}
+        comment={comment}
+        url={url}
+        kids={kids}
+        id={id}
+        urlTitle={urlTitle}
+      />
     </Post>
   );
 };

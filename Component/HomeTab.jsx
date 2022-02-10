@@ -3,24 +3,17 @@ import { useState, useEffect } from "react";
 
 import { TabCard } from "../Component/TabCard.jsx";
 
-export const HomeTab = () => {
+export const HomeTab = ({ arrPost }) => {
   const [loading, setLoading] = useState(true);
-  const [arrPostTop, setArrPostTop] = useState([]);
+  const [arrPostTop, setArrPostTop] = useState(arrPost);
   const [arrPostNew, setArrPostNew] = useState([]);
   const [arrPostAsk, setArrPostAsk] = useState([]);
   const [arrPostShow, setArrPostShow] = useState([]);
-  const [slicePost, setSlicePost] = useState([]);
-  const [on, setOn] = useState(true);
+  const [on, setOn] = useState("0");
   const [widthPost, setWidthPost] = useState("0");
   const [count, setCount] = useState(1);
   const fetchData = async () => {
     try {
-      const responseTop = await fetch(
-        "https://hacker-news.firebaseio.com/v0/topstories.json"
-      );
-      const dataTop = await responseTop.json();
-      setArrPostTop(dataTop.slice(0, 10));
-
       const responseNew = await fetch(
         "https://hacker-news.firebaseio.com/v0/newstories.json"
       );
@@ -88,15 +81,11 @@ export const HomeTab = () => {
     align-items: center;
     border-bottom: 1px solid #2c2d32;
     border-bottom-color: ${(props) =>
-      props.className === on ? "#FF3E00" : "#2c2d32"};
+      props.value === on ? "#FF3E00" : "#2c2d32"};
     box-sizing: border-box;
-    color: ${(props) => (props.className === on ? "#FF3E00" : "#6b6c70")};
+    color: ${(props) => (props.value === on ? "#FF3E00" : "#6b6c70")};
     font-family: ProductSansRegular;
     font-size: 1em;
-    :hover {
-      border-bottom-color: #ff3e00;
-      color: #ff3e00;
-    }
   `;
   const TabTitleInput = styled.input`
     position: absolute;
@@ -104,25 +93,26 @@ export const HomeTab = () => {
   `;
   const onChange = (e) => {
     console.log("click");
+    setOn(e.target.value);
     console.log(e.target.value);
     setWidthPost(e.target.value);
   };
   return (
     <TabBox>
       <Tab>
-        <TabTitleLabel htmlFor="Top" className={on} onClick={onChange}>
+        <TabTitleLabel htmlFor="Top" value="0" onClick={onChange}>
           <TabTitleInput type="radio" value="0" id="Top" />
           Top
         </TabTitleLabel>
-        <TabTitleLabel htmlFor="New" className={!on} onClick={onChange}>
+        <TabTitleLabel htmlFor="New" value="22.5" onClick={onChange}>
           <TabTitleInput type="radio" value="22.5" id="New" />
           New
         </TabTitleLabel>
-        <TabTitleLabel htmlFor="Ask" className={!on} onClick={onChange}>
+        <TabTitleLabel htmlFor="Ask" value="45" onClick={onChange}>
           <TabTitleInput type="radio" value="45" id="Ask" />
           Ask
         </TabTitleLabel>
-        <TabTitleLabel htmlFor="Show" className={!on} onClick={onChange}>
+        <TabTitleLabel htmlFor="Show" value="67.5" onClick={onChange}>
           <TabTitleInput type="radio" value="67.5" id="Show" />
           Show
         </TabTitleLabel>

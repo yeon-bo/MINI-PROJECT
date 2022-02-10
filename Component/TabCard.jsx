@@ -30,7 +30,9 @@ export const TabCard = ({
         .then((data) => {
           postsTop[index] = data;
           if (data.kids != undefined) data.CommentsLength = data.kids.length;
-          else data.CommentsLength = 0;
+          if (data.url != undefined)
+            data.urlTitle = data.url.split("//")[1].split(".")[0];
+          else data.urlTitle = "not to exist";
           if (postsTop.length >= count * 10) {
             setLoadingTop(false);
             // console.log(posts);
@@ -110,6 +112,7 @@ export const TabCard = ({
                 karma={post.score}
                 comment={post.CommentsLength}
                 url={post.url}
+                urlTitle={post.urlTitle}
                 kids={post.kids}
               />
             ))}
@@ -124,6 +127,7 @@ export const TabCard = ({
                 karma={post.score}
                 comment={post.CommentsLength}
                 url={post.url}
+                urlTitle={post.urlTitle}
                 kids={post.kids}
               />
             ))}
@@ -138,6 +142,7 @@ export const TabCard = ({
                 karma={post.score}
                 comment={post.CommentsLength}
                 url={post.url}
+                urlTitle={post.urlTitle}
                 kids={post.kids}
               />
             ))}
@@ -152,6 +157,7 @@ export const TabCard = ({
                 karma={post.score}
                 comment={post.CommentsLength}
                 url={post.url}
+                urlTitle={post.urlTitle}
                 kids={post.kids}
               />
             ))}

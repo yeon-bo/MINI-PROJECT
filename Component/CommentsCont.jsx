@@ -3,9 +3,9 @@ import React, { useState } from "react";
 
 import { CommentsComRe } from "../Component/CommentsComRe.jsx";
 
-export const CommentsCont = () => {
+export const CommentsCont = ({ text, kids }) => {
   const [showComment, setShowComment] = useState(false);
-  const UserText = styled.span`
+  const UserText = styled.p`
     display: block;
     text-align: left;
     color: #cecfd4;
@@ -26,15 +26,12 @@ export const CommentsCont = () => {
     line-height: 0.94rem;
     padding: 0;
   `;
-  const onClick = () => {
+  const onClick = (e) => {
     setShowComment(!showComment);
   };
   return (
     <>
-      <UserText>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Porttitor est
-        ullamcorper adipiscing vestibulum.
-      </UserText>
+      <UserText dangerouslySetInnerHTML={{ __html: `${text}` }}></UserText>
       <More onClick={onClick}>more..</More>
       {showComment && <CommentsComRe />}
     </>

@@ -1,8 +1,30 @@
 import styled from "@emotion/styled";
+import { useState, useEffect } from "react";
 
 import { CardTitle } from "../Component/CardTitle.jsx";
 
-export const InfoTab = () => {
+export const InfoTab = ({ submitted }) => {
+  const [loading, setLoading] = useState(true);
+  const [arrPosts, setArrPosts] = useState([submitted]);
+  const [posts, setPost] = useState([]);
+  // const fetchData = async () => {
+  //   await arrPosts.map((post, index) => {
+  //     fetch(`https://hacker-news.firebaseio.com/v0/item/${post}.json`)
+  //       .then((response) => response.json())
+  //       .then((data) => {
+  //         posts[index] = data;
+  //         if (data.kids != undefined) data.CommentsLength = data.kids.length;
+  //         else data.CommentsLength = 0;
+  //         if (posts.length === arrPosts.length) {
+  //           setLoading(false);
+  //         }
+  //       });
+  //   });
+  // };
+  // console.log(arrPosts)
+  // useEffect(() => {
+  //   fetchData();
+  // }, []);
   const Intro = styled.span`
     display: inline-block;
     color: #cecfd4;

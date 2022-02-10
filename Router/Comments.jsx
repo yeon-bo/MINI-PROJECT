@@ -1,21 +1,21 @@
 import "../src/styles.css";
 import styled from "@emotion/styled";
 import { useState, useEffect } from "react";
-import { useLocation } from "react-router-dom";
 
 import { Backallow } from "../Component/Backallow";
 import { CommentsCom } from "../Component/CommentsCom";
 
 export const Comments = () => {
   const [loading, setLoading] = useState(true);
-  const [arrPosts, setArrPosts] = useState();
+  const [arrPosts, setArrPosts] = useState(
+    location.pathname.split("/")[2].split(",")
+  );
   const [posts, setPost] = useState([]);
-  const fetchDataTop = async () => {
-    await arrPosts[0].map((post, index) => {
+  const fetchData = async () => {
+    await arrPosts.map((post, index) => {
       fetch(`https://hacker-news.firebaseio.com/v0/item/${post}.json`)
         .then((response) => response.json())
         .then((data) => {
-          console.log(data);
           posts[index] = data;
           if (data.kids != undefined) data.CommentsLength = data.kids.length;
           else data.CommentsLength = 0;
@@ -25,8 +25,10 @@ export const Comments = () => {
         });
     });
   };
+  useEffect(() => {
+    fetchData();
+  }, []);
   // render={() =>console.log(location);}
-  console.log("ㅎㅎ");
   const TitleBack = styled.div`
     height: 4.15em;
     display: flex;
@@ -48,7 +50,11 @@ export const Comments = () => {
       <TitleBack>
         <Title>Comments</Title>
       </TitleBack>
-      {loading ? null : posts.map((post) => <CommentsCom kids={kids} />)}
+      {loading
+        ? null
+        : posts.map((post) => (
+            <CommentsCom by={post.by} text={post.text} kids={post.kids} />
+          ))}
     </div>
   );
 };

@@ -4,7 +4,7 @@ import React, { useState } from "react";
 
 import { CommentsCont } from "../Component/CommentsCont.jsx";
 
-export const CommentsCom = () => {
+export const CommentsCom = ({ by, text, kids }) => {
   const [showComment, setShowComment] = useState(false);
   const CommentCont = styled.div`
     box-sizing: border-box;
@@ -35,8 +35,8 @@ export const CommentsCom = () => {
   const AllowIcon = styled.img`
     position: absolute;
     width: 0.75em;
-    transform: rotate(180deg);
     right: 0;
+    transform: rotate(${showComment && "180deg"});
   `;
   const onClick = () => {
     setShowComment(!showComment);
@@ -45,12 +45,12 @@ export const CommentsCom = () => {
     <CommentCont>
       <UserBar>
         <Link to="/userinfo">
-          <UserName>doctoboggan</UserName>
+          <UserName>{by}</UserName>
         </Link>
         <UserTime>30 minutes ago</UserTime>
-        <AllowIcon src="./image/Allow.png" alt="Allow" onClick={onClick} />
+        <AllowIcon src="../image/Allow.png" alt="Allow" onClick={onClick} />
       </UserBar>
-      {showComment && <CommentsCont />}
+      {showComment && <CommentsCont text={text} kids={kids} />}
     </CommentCont>
   );
 };
