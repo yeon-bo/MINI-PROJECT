@@ -1,5 +1,7 @@
 import styled from "@emotion/styled";
 
+import { SuperKarma } from "../Component/SuperKarma.jsx";
+import { NormalKarma } from "../Component/NormalKarma.jsx";
 import { Karma } from "../Component/Karma.jsx";
 
 export const AboutLink = () => {
@@ -91,9 +93,9 @@ We're using `}
         <ContentSmall>
           We give this badge to those who are ranked 100th or higher.
         </ContentSmall>
-        <Karma />
+        <SuperKarma />
         <ContentKarma>Ranked 100th or higher. </ContentKarma>
-        <Karma />
+        <NormalKarma />
         <ContentKarma>
           More than 501 karma. It means you can downvote.{" "}
         </ContentKarma>

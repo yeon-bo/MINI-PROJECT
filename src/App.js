@@ -13,9 +13,9 @@ export default function App() {
       <Routes>
         <Route exact path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
-        <Route path="/comments" element={<Comments />} />
-        <Route path="/detail" element={<Detail />} />
-        <Route path="/userinfo" element={<UserInfo />} />
+        <Route path="/comments/:id" element={<Comments />} />
+        <Route path="/detail/:id" element={<Detail />} />
+        <Route path="/userinfo/:id" element={<UserInfo />} />
       </Routes>
     </div>
   );

@@ -3,20 +3,26 @@ import { useState, useEffect } from "react";
 
 import { Newscard } from "../Component/Newscard.jsx";
 
-export const DailyNews = () => {
+export const DailyNews = ({ arrPost }) => {
   const [loading, setLoading] = useState(true);
-  const [post, setPost] = useState([]);
-  const getPost = async () => {
-    const json = await (
-      await fetch(
-        "https://hacker-news.firebaseio.com/v0/item/8863.json?print=pretty"
-      )
-    ).json();
-    setPost(json);
-    setLoading(false);
+  const [arrPostsTop, setArrPostsTop] = useState([arrPost]);
+  const [postsTop, setPostTop] = useState([]);
+  const fetchData = async () => {
+    await arrPostsTop[0].map((post, index) => {
+      fetch(`https://hacker-news.firebaseio.com/v0/item/${post}.json`)
+        .then((response) => response.json())
+        .then((data) => {
+          postsTop[index] = data;
+          if (data.kids != undefined) data.CommentsLength = data.kids.length;
+          else data.CommentsLength = 0;
+          if (postsTop.length >= 10) {
+            setLoading(false);
+          }
+        });
+    });
   };
   useEffect(() => {
-    getPost();
+    fetchData();
   }, []);
   const Title = styled.h3`
     font-family: ProductSansBold;
@@ -41,14 +47,19 @@ export const DailyNews = () => {
       <Title>Daily News</Title>
       <Card_cont>
         <Cards>
-          <Newscard
-            title={post.title}
-            by={post.by}
-            karma={post.score}
-            // comment={post.kids.length}
-            url={post.url}
-          />
-          <Newscard />
+          {loading
+            ? null
+            : postsTop.map((post) => (
+                <Newscard
+                  title={post.title}
+                  by={post.by}
+                  time={post.time}
+                  karma={post.score}
+                  comment={post.CommentsLength}
+                  url={post.url}
+                  kids={post.kids}
+                />
+              ))}
         </Cards>
       </Card_cont>
     </>
