@@ -2,7 +2,10 @@ import React, { useState } from "react";
 import styled from "@emotion/styled";
 import { Link } from "react-router-dom";
 
+import { SearchTag } from "../Component/SearchTag.jsx";
+
 export const Search = () => {
+  const [on, setOn] = useState(false);
   const Search = styled.div`
     background-color: #18191e;
     position: relative;
@@ -54,19 +57,25 @@ export const Search = () => {
     line-height: 1.17em;
     color: #838489;
   `;
+  const onClick = () => {
+    setOn(!on);
+  };
   return (
-    <Search>
-      <Link to="/">
-        <Logo src="./image/logo.png" alt="logo" />
-      </Link>
-      <SearchBox>
-        <SearchInput type="text" />
-        <SearchIcon src="./image/Search.png" alt="Search" />
-        <Placeholder>Search</Placeholder>
-      </SearchBox>
-      <Link to="/about">
-        <Help src="./image/Help.png" alt="Help" />
-      </Link>
-    </Search>
+    <>
+      <Search>
+        <Link to="/">
+          <Logo src="./image/logo.png" alt="logo" />
+        </Link>
+        <SearchBox>
+          <SearchInput onClick={onClick} type="text" />
+          <SearchIcon src="./image/Search.png" alt="Search" />
+          <Placeholder>Search</Placeholder>
+        </SearchBox>
+        <Link to="/about">
+          <Help src="./image/Help.png" alt="Help" />
+        </Link>
+      </Search>
+      {on ? <SearchTag /> : null}
+    </>
   );
 };
