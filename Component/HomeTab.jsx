@@ -87,9 +87,10 @@ export const HomeTab = () => {
     justify-content: center;
     align-items: center;
     border-bottom: 1px solid #2c2d32;
-    border-bottom-color: ${(props) => (props.value ? "#FF3E00" : "#2c2d32")};
+    border-bottom-color: ${(props) =>
+      props.className === on ? "#FF3E00" : "#2c2d32"};
     box-sizing: border-box;
-    color: ${(props) => (props.value ? "#FF3E00" : "#6b6c70")};
+    color: ${(props) => (props.className === on ? "#FF3E00" : "#6b6c70")};
     font-family: ProductSansRegular;
     font-size: 1em;
     :hover {
@@ -117,7 +118,7 @@ export const HomeTab = () => {
           <TabTitleInput type="radio" value="22.5" id="New" />
           New
         </TabTitleLabel>
-        <TabTitleLabel htmlFor="Ask" className={on} onClick={onChange}>
+        <TabTitleLabel htmlFor="Ask" className={!on} onClick={onChange}>
           <TabTitleInput type="radio" value="45" id="Ask" />
           Ask
         </TabTitleLabel>

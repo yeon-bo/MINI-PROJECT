@@ -14,8 +14,6 @@ export const Comment = ({ kids }) => {
       const data = await response.json();
       setPost(data);
       setText(data.text);
-      console.log(data);
-      console.log(data.text);
       setLoading(false);
     } catch (error) {
       console.log(error);

@@ -106,6 +106,7 @@ export const TabCard = ({
           : postsTop.map((post) => (
               <CardTitle
                 title={post.title}
+                id={post.id}
                 karma={post.score}
                 comment={post.CommentsLength}
                 url={post.url}
@@ -119,6 +120,7 @@ export const TabCard = ({
           : postsNew.map((post) => (
               <CardTitle
                 title={post.title}
+                id={post.id}
                 karma={post.score}
                 comment={post.CommentsLength}
                 url={post.url}
@@ -132,6 +134,7 @@ export const TabCard = ({
           : postsAsk.map((post) => (
               <CardTitle
                 title={post.title}
+                id={post.id}
                 karma={post.score}
                 comment={post.CommentsLength}
                 url={post.url}
@@ -145,6 +148,7 @@ export const TabCard = ({
           : postsShow.map((post) => (
               <CardTitle
                 title={post.title}
+                id={post.id}
                 karma={post.score}
                 comment={post.CommentsLength}
                 url={post.url}
