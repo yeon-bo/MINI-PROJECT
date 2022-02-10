@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 import { CommentsComRe } from "../Component/CommentsComRe.jsx";
 
@@ -26,14 +26,16 @@ export const CommentsCont = ({ text, kids }) => {
     line-height: 0.94rem;
     padding: 0;
   `;
-  const onClick = (e) => {
+  const onClick = () => {
     setShowComment(!showComment);
   };
   return (
     <>
       <UserText dangerouslySetInnerHTML={{ __html: `${text}` }}></UserText>
-      <More onClick={onClick}>more..</More>
-      {showComment && <CommentsComRe />}
+      <More onClick={onClick}>
+        {kids !== undefined ? (showComment ? "hide.." : "more..") : null}
+      </More>
+      {showComment && <CommentsComRe kids={kids} />}
     </>
   );
 };

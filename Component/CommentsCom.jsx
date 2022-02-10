@@ -4,8 +4,34 @@ import React, { useState } from "react";
 
 import { CommentsCont } from "../Component/CommentsCont.jsx";
 
-export const CommentsCom = ({ by, text, kids }) => {
+export const CommentsCom = ({ by, text, kids, time }) => {
   const [showComment, setShowComment] = useState(false);
+
+  function timeForToday(value) {
+    const today = new Date();
+    const timeValue = new Date(value * 1000);
+
+    const betweenTime = Math.floor(
+      (today.getTime() - timeValue.getTime()) / 1000 / 60
+    );
+    if (betweenTime < 1) return "recent";
+    if (betweenTime < 60) {
+      return `${betweenTime} minutes ago`;
+    }
+
+    const betweenTimeHour = Math.floor(betweenTime / 60);
+    if (betweenTimeHour < 24) {
+      return `${betweenTimeHour} hours ago`;
+    }
+
+    const betweenTimeDay = Math.floor(betweenTime / 60 / 24);
+    if (betweenTimeDay < 365) {
+      return `${betweenTimeDay} days ago`;
+    }
+
+    return `${Math.floor(betweenTimeDay / 365)} years ago`;
+  }
+
   const CommentCont = styled.div`
     box-sizing: border-box;
     border-bottom: 1px solid #38393d;
@@ -37,6 +63,7 @@ export const CommentsCom = ({ by, text, kids }) => {
     width: 0.75em;
     right: 0;
     transform: rotate(${showComment && "180deg"});
+    cursor: pointer;
   `;
   const onClick = () => {
     setShowComment(!showComment);
@@ -44,10 +71,14 @@ export const CommentsCom = ({ by, text, kids }) => {
   return (
     <CommentCont>
       <UserBar>
-        <Link to="/userinfo">
+        <Link
+          to={{
+            pathname: `/userinfo/${by}`
+          }}
+        >
           <UserName>{by}</UserName>
         </Link>
-        <UserTime>30 minutes ago</UserTime>
+        <UserTime>{timeForToday(time)}</UserTime>
         <AllowIcon src="../image/Allow.png" alt="Allow" onClick={onClick} />
       </UserBar>
       {showComment && <CommentsCont text={text} kids={kids} />}

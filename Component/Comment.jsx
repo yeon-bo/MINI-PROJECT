@@ -95,9 +95,6 @@ export const Comment = ({ kids }) => {
   `;
   return (
     <Comment>
-      {/* {kids = undefined
-          ? null
-          : */}
       <UserCont>
         <Link
           to={{
@@ -112,7 +109,10 @@ export const Comment = ({ kids }) => {
         <UserTime>{timeForToday(post.time)}</UserTime>
       </UserCont>
       {loading ? null : (
-        <CommentText dangerouslySetInnerHTML={{ __html: text }}></CommentText>
+        <CommentText
+          dangerouslySetInnerHTML={{ __html: text }}
+          style={{ textDecoration: "none" }}
+        ></CommentText>
       )}
     </Comment>
   );

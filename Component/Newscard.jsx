@@ -1,13 +1,22 @@
 import styled from "@emotion/styled";
 import { Link } from "react-router-dom";
-import { useState, useEffect } from "react";
 
 import { SuperKarma } from "../Component/SuperKarma.jsx";
 import { NormalKarma } from "../Component/NormalKarma.jsx";
 import { Karma } from "../Component/Karma.jsx";
 import { Cardbar } from "../Component/Cardbar.jsx";
 
-export const Newscard = ({ by, title, karma, comment, url, time, kids }) => {
+export const Newscard = ({
+  by,
+  title,
+  karma,
+  comment,
+  url,
+  urlTitle,
+  time,
+  kids,
+  id
+}) => {
   function timeForToday(value) {
     const today = new Date();
     const timeValue = new Date(value * 1000);
@@ -81,7 +90,14 @@ export const Newscard = ({ by, title, karma, comment, url, time, kids }) => {
   `;
   return (
     <Card>
-      <Link to="/detail">
+      <Link
+        to={{
+          pathname: `/detail/${id}`,
+          state: {
+            kids: { kids }
+          }
+        }}
+      >
         <News>
           <User>
             {karma >= 30 ? (
@@ -105,7 +121,14 @@ export const Newscard = ({ by, title, karma, comment, url, time, kids }) => {
           <UserTime>{timeForToday(time)}</UserTime>
         </News>
       </Link>
-      <Cardbar karma={karma} comment={comment} url={url} by={by} kids={kids} />
+      <Cardbar
+        karma={karma}
+        comment={comment}
+        url={url}
+        urlTitle={urlTitle}
+        by={by}
+        kids={kids}
+      />
     </Card>
   );
 };

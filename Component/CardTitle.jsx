@@ -38,6 +38,7 @@ export const CardTitle = ({
     top: 1.54em;
     right: 0.88em;
     transform: rotate(${showComment && "180deg"});
+    cursor: pointer;
   `;
   const onClick = () => {
     setShowComment(!showComment);
@@ -47,7 +48,7 @@ export const CardTitle = ({
       <PostTitle>
         <Link
           to={{
-            pathname: `/detail/${kids}`,
+            pathname: `/detail/${id}`,
             state: {
               kids: { kids }
             }
@@ -58,7 +59,7 @@ export const CardTitle = ({
         </Link>
         <AllowIcon src="../image/Allow.png" alt="Allow" onClick={onClick} />
       </PostTitle>
-      {showComment && <Comment kids={kids} />}
+      {kids === undefined ? null : showComment && <Comment kids={kids} />}
       <Cardbar
         karma={karma}
         comment={comment}

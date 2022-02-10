@@ -3,41 +3,23 @@ import { useState, useEffect } from "react";
 
 import { CardTitle } from "../Component/CardTitle.jsx";
 
-export const InfoTab = ({ submitted }) => {
-  const [loading, setLoading] = useState(true);
+export const InfoTab = ({ submitted, about }) => {
   const [arrPosts, setArrPosts] = useState([submitted]);
-  const [posts, setPost] = useState([]);
-  // const fetchData = async () => {
-  //   await arrPosts.map((post, index) => {
-  //     fetch(`https://hacker-news.firebaseio.com/v0/item/${post}.json`)
-  //       .then((response) => response.json())
-  //       .then((data) => {
-  //         posts[index] = data;
-  //         if (data.kids != undefined) data.CommentsLength = data.kids.length;
-  //         else data.CommentsLength = 0;
-  //         if (posts.length === arrPosts.length) {
-  //           setLoading(false);
-  //         }
-  //       });
-  //   });
-  // };
-  // console.log(arrPosts)
-  // useEffect(() => {
-  //   fetchData();
-  // }, []);
+  const [on, setOn] = useState("0");
+  const [widthPost, setWidthPost] = useState("0");
   const Intro = styled.span`
     display: inline-block;
     color: #cecfd4;
+    width: 20rem;
     font-family: ProductSansRegular;
     font-size: 0.81em;
     line-height: 1rem;
     text-align: left;
     margin: 1.5rem 1.25rem 2rem;
-    height: 4rem;
     overflow: hidden;
   `;
   const TabBox = styled.div`
-    display: inline-block;
+    display: absolute;
     width: 20em;
     margin: 0 auto;
   `;
@@ -47,35 +29,71 @@ export const InfoTab = ({ submitted }) => {
     align-items: center;
     justify-content: center;
   `;
-  const TabTitle = styled.div`
+  const TabTitleLabel = styled.label`
     width: 33.33%;
     height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
     border-bottom: 2px solid #2c2d32;
+    border-bottom-color: ${(props) =>
+      props.value === on ? "#FF3E00" : "#2c2d32"};
     box-sizing: border-box;
-    color: #6b6c70;
+    color: ${(props) => (props.value === on ? "#FF3E00" : "#6b6c70")};
     font-family: ProductSansBold;
     font-size: 0.75em;
     line-height: 0.91rem;
+    cursor: pointer;
+  `;
+  const TabTitleInput = styled.input`
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
   `;
   const PostBox = styled.div``;
+  const onChange = (e) => {
+    setOn(e.target.value);
+    setWidthPost(e.target.value);
+  };
   return (
     <>
-      <Intro>
-        Viverra proin vulputate in hac at sit non. Aliquet pellentesque nibh sem
-        molestie vitae lacus, sed id sem. Dolor ultrices commodo ac varius
-        morbi. Viverra proin vulputate in hac at sit non.
-      </Intro>
+      <Intro>{about === undefined ? "-" : about}</Intro>
       <TabBox>
         <Tab>
-          <TabTitle>Submission</TabTitle>
-          <TabTitle>Comments</TabTitle>
-          <TabTitle>Favorites</TabTitle>
+          <TabTitleLabel htmlFor="Top" value="0" onClick={onChange}>
+            <TabTitleInput type="radio" value="0" id="Top" />
+            Submission
+          </TabTitleLabel>
+          <TabTitleLabel htmlFor="New" value="22.5" onClick={onChange}>
+            <TabTitleInput type="radio" value="22.5" id="New" />
+            Comments
+          </TabTitleLabel>
+          <TabTitleLabel htmlFor="Ask" value="45" onClick={onChange}>
+            <TabTitleInput type="radio" value="45" id="Ask" />
+            Favorites
+          </TabTitleLabel>
         </Tab>
         <PostBox>
-          <CardTitle />
+          <CardTitle
+            title={
+              "Metal Detectorist Discovers One of England’s Earliest Gold Coins in a Farm Field"
+            }
+            karma={"1320"}
+            comment={"10"}
+            url={"url"}
+            kids={[30290613]}
+            urlTitle={"Giant Ant"}
+          />
+          <CardTitle
+            title={
+              "Metal Detectorist Discovers One of England’s Earliest Gold Coins in a Farm Field"
+            }
+            karma={"1320"}
+            comment={"10"}
+            url={"url"}
+            kids={[30290613]}
+            urlTitle={"Giant Ant"}
+          />
         </PostBox>
       </TabBox>
     </>

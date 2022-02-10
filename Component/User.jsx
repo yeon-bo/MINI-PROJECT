@@ -1,10 +1,11 @@
 import styled from "@emotion/styled";
+import { Link } from "react-router-dom";
 
 import { SuperKarma } from "../Component/SuperKarma.jsx";
 import { NormalKarma } from "../Component/NormalKarma.jsx";
 import { Karma } from "../Component/Karma.jsx";
 
-export const User = ({ id, karma, created }) => {
+export const User = ({ id, karma, created, time }) => {
   function timeForToday(value) {
     const today = new Date();
     const timeValue = new Date(value * 1000);
@@ -63,9 +64,18 @@ export const User = ({ id, karma, created }) => {
       ) : (
         <Karma />
       )}
-      <UserName>{id}</UserName>
+      <Link
+        to={{
+          pathname: `/userinfo/${id}`
+        }}
+        style={{ textDecoration: "none" }}
+      >
+        <UserName>{id}</UserName>
+      </Link>
       <UserInfo>
-        {karma} karma | joined {timeForToday(created)}
+        {time !== undefined
+          ? `posted ${timeForToday(time)}`
+          : `${karma} karma | joined ${timeForToday(created)}`}
       </UserInfo>
     </UserCont>
   );

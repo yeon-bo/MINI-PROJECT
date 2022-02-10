@@ -28,6 +28,7 @@ export const Comments = () => {
   useEffect(() => {
     fetchData();
   }, []);
+
   // render={() =>console.log(location);}
   const TitleBack = styled.div`
     height: 4.15em;
@@ -53,7 +54,12 @@ export const Comments = () => {
       {loading
         ? null
         : posts.map((post) => (
-            <CommentsCom by={post.by} text={post.text} kids={post.kids} />
+            <CommentsCom
+              by={post.by}
+              text={post.text}
+              kids={post.kids}
+              time={post.time}
+            />
           ))}
     </div>
   );

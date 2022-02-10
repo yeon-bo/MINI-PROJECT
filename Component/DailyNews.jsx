@@ -15,6 +15,9 @@ export const DailyNews = ({ arrPost }) => {
           postsTop[index] = data;
           if (data.kids != undefined) data.CommentsLength = data.kids.length;
           else data.CommentsLength = 0;
+          if (data.url != undefined)
+            data.urlTitle = data.url.split("//")[1].split("/")[0];
+          else data.urlTitle = "not to exist";
           if (postsTop.length >= 10) {
             setLoading(false);
           }
@@ -52,11 +55,13 @@ export const DailyNews = ({ arrPost }) => {
             : postsTop.map((post) => (
                 <Newscard
                   title={post.title}
+                  id={post.id}
                   by={post.by}
                   time={post.time}
                   karma={post.score}
                   comment={post.CommentsLength}
                   url={post.url}
+                  urlTitle={post.urlTitle}
                   kids={post.kids}
                 />
               ))}

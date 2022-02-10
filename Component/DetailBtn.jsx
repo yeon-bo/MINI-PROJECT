@@ -1,7 +1,7 @@
 import styled from "@emotion/styled";
 import { Link } from "react-router-dom";
 
-export const DetailBtn = () => {
+export const DetailBtn = ({ kids, kidsLength, url }) => {
   const Background = styled.div`
     position: absolute;
     width: 360px;
@@ -33,7 +33,7 @@ export const DetailBtn = () => {
     font-size: 1em;
     line-height: 1.5rem;
   `;
-  const LinkBtn = styled.div`
+  const LinkBtn = styled.a`
     width: 3.25em;
     height: 100%;
     background: #fff;
@@ -50,14 +50,21 @@ export const DetailBtn = () => {
   return (
     <Background>
       <BtnCont>
-        <Link to="/comments" style={{ textDecoration: "none" }}>
+        <Link
+          to={{
+            pathname: `/comments/${kids}`
+          }}
+          style={{ textDecoration: "none" }}
+        >
           <CommentBtn>
-            <BntText>34 comments</BntText>
+            <BntText>{kidsLength} comments</BntText>
           </CommentBtn>
         </Link>
-        <LinkBtn>
-          <LinkIcon src="../image/Link2.png" Backallow="Link2" />
-        </LinkBtn>
+        {url === undefined ? null : (
+          <LinkBtn target="_blank" href={url}>
+            <LinkIcon src="../image/Link2.png" Backallow="Link2" />
+          </LinkBtn>
+        )}
       </BtnCont>
     </Background>
   );

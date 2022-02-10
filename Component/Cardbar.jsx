@@ -1,9 +1,9 @@
 import styled from "@emotion/styled";
 import { Link } from "react-router-dom";
-import { useState, useEffect } from "react";
 
 export const Cardbar = ({ karma, comment, url, kids, id, urlTitle }) => {
   const Cardbar = styled.div`
+    position: relative;
     height: 2em;
     border-top: 1px solid #38393d;
     box-sizing: border-box;
@@ -13,7 +13,7 @@ export const Cardbar = ({ karma, comment, url, kids, id, urlTitle }) => {
   const OutLink = styled.a`
     display: block;
     text-decoration: none;
-    width: 45%;
+    width: 60%;
     height: 1em;
     margin-left: 1em;
     top: 50%;
@@ -37,11 +37,11 @@ export const Cardbar = ({ karma, comment, url, kids, id, urlTitle }) => {
     overflow: hidden;
   `;
   const Buttons = styled.div`
-    width: 55%;
+    position: absolute;
     height: 1em;
     margin-right: 1em;
-    top: 50%;
-    transform: translateY(45%);
+    top: 0.44em;
+    right: 0;
     display: flex;
     align-items: center;
     justify-content: end;
@@ -73,10 +73,12 @@ export const Cardbar = ({ karma, comment, url, kids, id, urlTitle }) => {
   `;
   return (
     <Cardbar>
-      <OutLink target="_blank" href={url}>
-        <LinkIcon src="../image/Link.png" alt="Link" />
-        <LinkTitle>{urlTitle}</LinkTitle>
-      </OutLink>
+      {urlTitle === undefined ? null : (
+        <OutLink target="_blank" href={url}>
+          <LinkIcon src="../image/Link.png" alt="Link" />
+          <LinkTitle>{urlTitle}</LinkTitle>
+        </OutLink>
+      )}
       <Buttons>
         <KarmaButton>
           <Icon src="../image/Karma.png" alt="Karma" />
@@ -84,10 +86,7 @@ export const Cardbar = ({ karma, comment, url, kids, id, urlTitle }) => {
         </KarmaButton>
         <Link
           to={{
-            pathname: `/comments/${kids}`,
-            state: {
-              kids: { kids }
-            }
+            pathname: `/comments/${kids}`
           }}
           style={{ textDecoration: "none" }}
         >

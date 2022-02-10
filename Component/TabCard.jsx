@@ -30,8 +30,9 @@ export const TabCard = ({
         .then((data) => {
           postsTop[index] = data;
           if (data.kids != undefined) data.CommentsLength = data.kids.length;
+          else data.CommentsLength = 0;
           if (data.url != undefined)
-            data.urlTitle = data.url.split("//")[1].split(".")[0];
+            data.urlTitle = data.url.split("//")[1].split("/")[0];
           else data.urlTitle = "not to exist";
           if (postsTop.length >= count * 10) {
             setLoadingTop(false);
@@ -48,6 +49,8 @@ export const TabCard = ({
           postsNew[index] = data;
           if (data.kids != undefined) data.CommentsLength = data.kids.length;
           else data.CommentsLength = 0;
+          if (data.url != undefined)
+            data.urlTitle = data.url.split("//")[1].split("/")[0];
           if (postsNew.length >= count * 10) {
             setLoadingNew(false);
           }
@@ -62,6 +65,8 @@ export const TabCard = ({
           postsAsk[index] = data;
           if (data.kids != undefined) data.CommentsLength = data.kids.length;
           else data.CommentsLength = 0;
+          if (data.url != undefined)
+            data.urlTitle = data.url.split("//")[1].split("/")[0];
           if (postsAsk.length >= count * 10) {
             setLoadingAsk(false);
           }
@@ -76,6 +81,8 @@ export const TabCard = ({
           postsShow[index] = data;
           if (data.kids != undefined) data.CommentsLength = data.kids.length;
           else data.CommentsLength = 0;
+          if (data.url != undefined)
+            data.urlTitle = data.url.split("//")[1].split("/")[0];
           if (postsShow.length >= count * 10) {
             setLoadingShow(false);
           }
@@ -142,7 +149,6 @@ export const TabCard = ({
                 karma={post.score}
                 comment={post.CommentsLength}
                 url={post.url}
-                urlTitle={post.urlTitle}
                 kids={post.kids}
               />
             ))}

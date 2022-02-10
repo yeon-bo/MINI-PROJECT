@@ -61,6 +61,7 @@ export const HomeTab = ({ arrPost }) => {
   // }
   // console.log(loading);
   // console.log(slicePost);
+
   const TabBox = styled.div`
     display: inline-block;
     width: 20em;
@@ -86,15 +87,15 @@ export const HomeTab = ({ arrPost }) => {
     color: ${(props) => (props.value === on ? "#FF3E00" : "#6b6c70")};
     font-family: ProductSansRegular;
     font-size: 1em;
+    cursor: pointer;
   `;
   const TabTitleInput = styled.input`
     position: absolute;
     opacity: 0;
+    cursor: pointer;
   `;
   const onChange = (e) => {
-    console.log("click");
     setOn(e.target.value);
-    console.log(e.target.value);
     setWidthPost(e.target.value);
   };
   return (

@@ -31,7 +31,7 @@ export const UserInfo = () => {
       {loading ? null : (
         <User id={posts.id} karma={posts.karma} created={posts.created} />
       )}
-      <InfoTab submitted={posts.submitted} />
+      <InfoTab submitted={posts.submitted} about={posts.about} />
     </div>
   );
 };

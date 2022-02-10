@@ -1,6 +1,51 @@
 import styled from "@emotion/styled";
+import React, { useState, useEffect } from "react";
 
-export const CommentsComRe = () => {
+export const CommentsComRe = ({ kids }) => {
+  const [loading, setLoading] = useState(true);
+  const [arrPosts, setArrPost] = useState(kids);
+  const [posts, setPost] = useState([]);
+  const fetchData = async () => {
+    await arrPosts.map((post, index) => {
+      fetch(`https://hacker-news.firebaseio.com/v0/item/${post}.json`)
+        .then((response) => response.json())
+        .then((data) => {
+          posts[index] = data;
+          if (posts.length === arrPosts.length) {
+            setLoading(false);
+          }
+        });
+    });
+  };
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  function timeForToday(value) {
+    const today = new Date();
+    const timeValue = new Date(value * 1000);
+
+    const betweenTime = Math.floor(
+      (today.getTime() - timeValue.getTime()) / 1000 / 60
+    );
+    if (betweenTime < 1) return "recent";
+    if (betweenTime < 60) {
+      return `${betweenTime} minutes ago`;
+    }
+
+    const betweenTimeHour = Math.floor(betweenTime / 60);
+    if (betweenTimeHour < 24) {
+      return `${betweenTimeHour} hours ago`;
+    }
+
+    const betweenTimeDay = Math.floor(betweenTime / 60 / 24);
+    if (betweenTimeDay < 365) {
+      return `${betweenTimeDay} days ago`;
+    }
+
+    return `${Math.floor(betweenTimeDay / 365)} years ago`;
+  }
+
   const CommentCont = styled.div`
     box-sizing: border-box;
     border-top: 1px solid #38393d;
@@ -27,7 +72,7 @@ export const CommentsComRe = () => {
     line-height: 0.94rem;
     letter-spacing: -0.02em;
   `;
-  const UserText = styled.span`
+  const UserText = styled.p`
     display: block;
     text-align: left;
     color: #cecfd4;
@@ -37,16 +82,20 @@ export const CommentsComRe = () => {
     margin: 1.1rem 1rem 1.1rem 2.5rem;
   `;
   return (
-    <CommentCont>
-      <UserBar>
-        <UserName>doctoboggan</UserName>
-        <UserTime>30 minutes ago</UserTime>
-      </UserBar>
-      <UserText>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Porttitor est
-        ullamcorper adipiscing vestibulum. Suspendisse hac arcu, nunc adipiscing
-        dictum purus. Vel
-      </UserText>
-    </CommentCont>
+    <>
+      {loading
+        ? null
+        : posts.map((post) => (
+            <CommentCont>
+              <UserBar>
+                <UserName>{post.by}</UserName>
+                <UserTime>{timeForToday(post.time)}</UserTime>
+              </UserBar>
+              <UserText
+                dangerouslySetInnerHTML={{ __html: `${post.text}` }}
+              ></UserText>
+            </CommentCont>
+          ))}
+    </>
   );
 };
