@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import { Link } from "react-router-dom";
 import React, { useState, useEffect } from "react";
 
 export const CommentsComRe = ({ kids }) => {
@@ -88,7 +89,13 @@ export const CommentsComRe = ({ kids }) => {
         : posts.map((post) => (
             <CommentCont>
               <UserBar>
-                <UserName>{post.by}</UserName>
+                <Link
+                  to={{
+                    pathname: `/userinfo/${post.by}`
+                  }}
+                >
+                  <UserName>{post.by}</UserName>
+                </Link>
                 <UserTime>{timeForToday(post.time)}</UserTime>
               </UserBar>
               <UserText

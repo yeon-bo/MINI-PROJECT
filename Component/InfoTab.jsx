@@ -57,7 +57,11 @@ export const InfoTab = ({ submitted, about }) => {
   };
   return (
     <>
-      <Intro>{about === undefined ? "-" : about}</Intro>
+      {about === undefined ? (
+        "-"
+      ) : (
+        <Intro dangerouslySetInnerHTML={{ __html: about }}></Intro>
+      )}
       <TabBox>
         <Tab>
           <TabTitleLabel htmlFor="Top" value="0" onClick={onChange}>
